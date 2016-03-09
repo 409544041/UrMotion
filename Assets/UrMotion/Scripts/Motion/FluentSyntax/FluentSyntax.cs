@@ -1,0 +1,47 @@
+﻿using UnityEngine;
+using System;
+using System.Collections.Generic;
+
+namespace UrMotion
+{
+	public static class FluentSyntax
+	{
+		public static IEnumerator<V> AsEnumerator<V, T>(T source)
+		{
+			if (typeof(T) == typeof(IEnumerator<V>)) {
+				return (IEnumerator<V>)source;
+			}
+			if (typeof(T) == typeof(IEnumerable<V>)) {
+				return ((IEnumerable<V>)source).GetEnumerator();
+			}
+			if (typeof(T) == typeof(V)) {
+				return Source.Constant((V)(object)source);
+			}
+			if (typeof(T) == typeof(Func<V>)) {
+				return Source.Function((Func<V>)(object)source);
+			}
+			throw new ArgumentException(string.Format("Expected {0} but was: {1}", typeof(V).FullName, typeof(T).FullName));
+		}
+
+		public static void Resolve<V>(MotionBehaviour<V> self, Action<MotionBehaviour<float>> vec1, Action<MotionBehaviour<Vector2>> vec2, Action<MotionBehaviour<Vector3>> vec3, Action<MotionBehaviour<Vector4>> vec4)
+		{
+			if (typeof(V) == typeof(float)) {
+				vec1((MotionBehaviour<float>)(object)self);
+				return;
+			}
+			if (typeof(V) == typeof(Vector2)) {
+				vec2((MotionBehaviour<Vector2>)(object)self);
+				return;
+			}
+			if (typeof(V) == typeof(Vector3)) {
+				vec3((MotionBehaviour<Vector3>)(object)self);
+				return;
+			}
+			if (typeof(V) == typeof(Vector4)) {
+				vec4((MotionBehaviour<Vector4>)(object)self);
+				return;
+			}
+			throw new ArgumentException(string.Format("{0} is not valid.", typeof(V).FullName));
+		}
+	}
+}
