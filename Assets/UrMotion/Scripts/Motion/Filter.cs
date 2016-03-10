@@ -1,10 +1,25 @@
 ﻿using UnityEngine;
+using System;
 using System.Collections.Generic;
 
 namespace UrMotion
 {
 	public static class Filter
 	{
+		public static IEnumerator<V> Map<V>(IEnumerator<V> source, Func<V, V> map)
+		{
+			while (source.MoveNext()) {
+				yield return map(source.Current);
+			}
+		}
+
+		public static IEnumerator<V2> Map<V1, V2>(IEnumerator<V1> source, Func<V1, V2> map)
+		{
+			while (source.MoveNext()) {
+				yield return map(source.Current);
+			}
+		}
+
 		public static IEnumerator<float> Offset(IEnumerator<float> source, IEnumerator<float> value)
 		{
 			while (source.MoveNext() && value.MoveNext()) {
