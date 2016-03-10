@@ -60,5 +60,25 @@ namespace UrMotion
 				yield return source.Current * value.Current;
 			}
 		}
+
+		public static IEnumerator<V> Discrete<V>(IEnumerator<V> source, IEnumerator<float> interval)
+		{
+			while (source.MoveNext()) {
+				var v = source.Current;
+				var time = 0f;
+				for (;;) {
+					if (interval.MoveNext()) {
+						if (time <= interval.Current) {
+							yield return v;
+						} else {
+							break;
+						}
+					} else {
+						yield break;
+					}
+					time += 1f;
+				}
+			}
+		}
 	}
 }
