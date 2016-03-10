@@ -3,20 +3,20 @@ using UnityEngine.UI;
 
 namespace UrMotion
 {
-	public abstract class MotionVec1<T> : MotionBehaviour<float> where T : MotionBehaviour<float>
+	public abstract class MotionVec3<T> : MotionBehaviour<Vector3> where T : MotionBehaviour<Vector3>
 	{
-		public static MotionBehaviour<float> Add(GameObject g)
+		public static MotionBehaviour<Vector3> Add(GameObject g)
 		{
 			return Get<T>(g);
 		}
 
-		override protected float Add(float a, float b)
+		override protected Vector3 Add(Vector3 a, Vector3 b)
 		{
 			return a + b;
 		}
 	}
 
-	public abstract class MotionVec1T<T> : MotionVec1<T> where T : MotionBehaviour<float>
+	public abstract class MotionVec3T<T> : MotionVec3<T> where T : MotionBehaviour<Vector3>
 	{
 		public abstract Vector3 vector { get; set; }
 
@@ -28,7 +28,7 @@ namespace UrMotion
 		}
 	}
 
-	public abstract class MotionVec1P<T> : MotionVec1T<T> where T : MotionBehaviour<float>
+	public abstract class MotionVec3P<T> : MotionVec3T<T> where T : MotionBehaviour<Vector3>
 	{
 		override public Vector3 vector {
 			get {
@@ -40,7 +40,7 @@ namespace UrMotion
 		}
 	}
 
-	public abstract class MotionVec1WP<T> : MotionVec1T<T> where T : MotionBehaviour<float>
+	public abstract class MotionVec3WP<T> : MotionVec3T<T> where T : MotionBehaviour<Vector3>
 	{
 		override public Vector3 vector {
 			get {
@@ -52,7 +52,7 @@ namespace UrMotion
 		}
 	}
 
-	public abstract class MotionVec1R<T> : MotionVec1T<T> where T : MotionBehaviour<float>
+	public abstract class MotionVec3R<T> : MotionVec3T<T> where T : MotionBehaviour<Vector3>
 	{
 		override public Vector3 vector {
 			get {
@@ -64,7 +64,7 @@ namespace UrMotion
 		}
 	}
 
-	public abstract class MotionVec1WR<T> : MotionVec1T<T> where T : MotionBehaviour<float>
+	public abstract class MotionVec3WR<T> : MotionVec3T<T> where T : MotionBehaviour<Vector3>
 	{
 		override public Vector3 vector {
 			get {
@@ -76,7 +76,7 @@ namespace UrMotion
 		}
 	}
 
-	public abstract class MotionVec1S<T> : MotionVec1T<T> where T : MotionBehaviour<float>
+	public abstract class MotionVec3S<T> : MotionVec3T<T> where T : MotionBehaviour<Vector3>
 	{
 		override public Vector3 vector {
 			get {
@@ -88,7 +88,7 @@ namespace UrMotion
 		}
 	}
 
-	public abstract class MotionVec1G<T> : MotionVec1<T> where T : MotionBehaviour<float>
+	public abstract class MotionVec3G<T> : MotionVec3<T> where T : MotionBehaviour<Vector3>
 	{
 		Graphic g;
 
@@ -98,7 +98,7 @@ namespace UrMotion
 		}
 	}
 
-	public abstract class MotionVec1C<T> : MotionVec1G<T> where T : MotionBehaviour<float>
+	public abstract class MotionVec3C<T> : MotionVec3G<T> where T : MotionBehaviour<Vector3>
 	{
 		protected Color col {
 			get {
@@ -110,7 +110,7 @@ namespace UrMotion
 		}
 	}
 
-	public abstract class MotionVec1M<T> : MotionVec1<T> where T : MotionBehaviour<float>
+	public abstract class MotionVec3M<T> : MotionVec3<T> where T : MotionBehaviour<Vector3>
 	{
 		Renderer r;
 
@@ -129,7 +129,7 @@ namespace UrMotion
 		}
 	}
 
-	public abstract class MotionVec1MC<T> : MotionVec1M<T> where T : MotionBehaviour<float>
+	public abstract class MotionVec3MC<T> : MotionVec3M<T> where T : MotionBehaviour<Vector3>
 	{
 		protected Color col {
 			get {
