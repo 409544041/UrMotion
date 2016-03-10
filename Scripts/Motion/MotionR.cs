@@ -200,13 +200,13 @@ namespace UrMotion
 		}
 	}
 
-	public class MotionR : MotionRXY
+	public class MotionR : MotionRZ
 	{
 	}
 	public class MotionR3 : MotionRXYZ
 	{
 	}
-	public class MotionWR : MotionWRXY
+	public class MotionWR : MotionWRZ
 	{
 	}
 	public class MotionWR3 : MotionWRXYZ

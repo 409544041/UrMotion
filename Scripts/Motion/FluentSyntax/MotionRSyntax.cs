@@ -78,7 +78,7 @@ namespace UrMotion
 			return UrMotion.MotionWRXYZ.Add(g);
 		}
 
-		public static MotionBehaviourVec2 MotionR(this GameObject g)
+		public static MotionBehaviourVec1 MotionR(this GameObject g)
 		{
 			return UrMotion.MotionR.Add(g);
 		}
@@ -88,7 +88,7 @@ namespace UrMotion
 			return UrMotion.MotionR3.Add(g);
 		}
 
-		public static MotionBehaviourVec2 MotionWR(this GameObject g)
+		public static MotionBehaviourVec1 MotionWR(this GameObject g)
 		{
 			return UrMotion.MotionWR.Add(g);
 		}
