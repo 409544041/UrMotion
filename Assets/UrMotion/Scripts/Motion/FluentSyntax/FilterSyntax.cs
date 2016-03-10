@@ -30,14 +30,30 @@ namespace UrMotion
 			return self;
 		}
 
+		public static MotionBehaviour<V> Discrete<V, T>(this MotionBehaviour<V> self, T interval)
+		{
+			Syntax.Resolve<V>(self,
+				(e) => e.Wrap((v) => Filter.Discrete(v, Syntax.AsEnumerator<float, T>(interval))),
+				(e) => e.Wrap((v) => Filter.Discrete(v, Syntax.AsEnumerator<float, T>(interval))),
+				(e) => e.Wrap((v) => Filter.Discrete(v, Syntax.AsEnumerator<float, T>(interval))),
+				(e) => e.Wrap((v) => Filter.Discrete(v, Syntax.AsEnumerator<float, T>(interval)))
+			);
+			return self;
+		}
+
 		public static MotionBehaviour<V> Offset<V>(this MotionBehaviour<V> self, Func<V> value)
 		{
 			return Offset<V, Func<V>>(self, value);
 		}
 
-		public static MotionBehaviour<V> Amplify<V>(this MotionBehaviour<V> self, Func<V> value)
+		public static MotionBehaviour<V> Amplify<V>(this MotionBehaviour<V> self, Func<float> value)
 		{
-			return Amplify<V, Func<V>>(self, value);
+			return Amplify<V, Func<float>>(self, value);
+		}
+
+		public static MotionBehaviour<V> Discrete<V>(this MotionBehaviour<V> self, Func<float> interval)
+		{
+			return Discrete<V, Func<float>>(self, interval);
 		}
 	}
 }
