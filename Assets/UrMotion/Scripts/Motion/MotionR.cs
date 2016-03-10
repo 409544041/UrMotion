@@ -2,7 +2,7 @@
 
 namespace UrMotion
 {
-	public class MotionX : MotionVec1P<MotionX>
+	public class MotionRX : MotionVec1R<MotionRX>
 	{
 		override protected float value {
 			get {
@@ -16,7 +16,7 @@ namespace UrMotion
 		}
 	}
 
-	public class MotionY : MotionVec1P<MotionY>
+	public class MotionRY : MotionVec1R<MotionRY>
 	{
 		override protected float value {
 			get {
@@ -30,7 +30,7 @@ namespace UrMotion
 		}
 	}
 
-	public class MotionZ : MotionVec1P<MotionZ>
+	public class MotionRZ : MotionVec1R<MotionRZ>
 	{
 		override protected float value {
 			get {
@@ -44,7 +44,7 @@ namespace UrMotion
 		}
 	}
 
-	public class MotionXY : MotionVec2P<MotionXY>
+	public class MotionRXY : MotionVec2R<MotionRXY>
 	{
 		override protected Vector2 value {
 			get {
@@ -59,7 +59,7 @@ namespace UrMotion
 		}
 	}
 
-	public class MotionXZ : MotionVec2P<MotionXZ>
+	public class MotionRXZ : MotionVec2R<MotionRXZ>
 	{
 		override protected Vector2 value {
 			get {
@@ -74,7 +74,7 @@ namespace UrMotion
 		}
 	}
 
-	public class MotionYZ : MotionVec2P<MotionYZ>
+	public class MotionRYZ : MotionVec2R<MotionRYZ>
 	{
 		override protected Vector2 value {
 			get {
@@ -89,7 +89,7 @@ namespace UrMotion
 		}
 	}
 
-	public class MotionXYZ : MotionVec3P<MotionXYZ>
+	public class MotionRXYZ : MotionVec3R<MotionRXYZ>
 	{
 		override protected Vector3 value {
 			get {
@@ -101,7 +101,7 @@ namespace UrMotion
 		}
 	}
 
-	public class MotionWX : MotionVec1WP<MotionWX>
+	public class MotionWRX : MotionVec1WR<MotionWRX>
 	{
 		override protected float value {
 			get {
@@ -115,7 +115,7 @@ namespace UrMotion
 		}
 	}
 
-	public class MotionWY : MotionVec1WP<MotionWY>
+	public class MotionWRY : MotionVec1WR<MotionWRY>
 	{
 		override protected float value {
 			get {
@@ -129,7 +129,7 @@ namespace UrMotion
 		}
 	}
 
-	public class MotionWZ : MotionVec1WP<MotionWZ>
+	public class MotionWRZ : MotionVec1WR<MotionWRZ>
 	{
 		override protected float value {
 			get {
@@ -143,7 +143,7 @@ namespace UrMotion
 		}
 	}
 
-	public class MotionWXY : MotionVec2WP<MotionWXY>
+	public class MotionWRXY : MotionVec2WR<MotionWRXY>
 	{
 		override protected Vector2 value {
 			get {
@@ -158,7 +158,7 @@ namespace UrMotion
 		}
 	}
 
-	public class MotionWXZ : MotionVec2WP<MotionWXZ>
+	public class MotionWRXZ : MotionVec2WR<MotionWRXZ>
 	{
 		override protected Vector2 value {
 			get {
@@ -173,7 +173,7 @@ namespace UrMotion
 		}
 	}
 
-	public class MotionWYZ : MotionVec2WP<MotionWYZ>
+	public class MotionWRYZ : MotionVec2WR<MotionWRYZ>
 	{
 		override protected Vector2 value {
 			get {
@@ -188,7 +188,7 @@ namespace UrMotion
 		}
 	}
 
-	public class MotionWXYZ : MotionVec3WP<MotionWXYZ>
+	public class MotionWRXYZ : MotionVec3WR<MotionWRXYZ>
 	{
 		override protected Vector3 value {
 			get {
@@ -200,16 +200,16 @@ namespace UrMotion
 		}
 	}
 
-	public class MotionP : MotionXY
+	public class MotionR : MotionRXY
 	{
 	}
-	public class MotionP3 : MotionXYZ
+	public class MotionR3 : MotionRXYZ
 	{
 	}
-	public class MotionWP : MotionWXY
+	public class MotionWR : MotionWRXY
 	{
 	}
-	public class MotionWP3 : MotionWXYZ
+	public class MotionWR3 : MotionWRXYZ
 	{
 	}
 }
