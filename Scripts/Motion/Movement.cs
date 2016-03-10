@@ -26,6 +26,26 @@ namespace UrMotion
 			return Move(Source.Sin(radius, freq, fps));
 		}
 
+		public static IEnumerator<float> Cos(IEnumerator<float> radius, float freq, float fps)
+		{
+			return Move(Source.Cos(radius, freq, fps));
+		}
+
+		public static IEnumerator<Vector2> Cos(IEnumerator<Vector2> radius, float freq, float fps)
+		{
+			return Move(Source.Cos(radius, freq, fps));
+		}
+
+		public static IEnumerator<Vector3> Cos(IEnumerator<Vector3> radius, float freq, float fps)
+		{
+			return Move(Source.Cos(radius, freq, fps));
+		}
+
+		public static IEnumerator<Vector4> Cos(IEnumerator<Vector4> radius, float freq, float fps)
+		{
+			return Move(Source.Cos(radius, freq, fps));
+		}
+
 		static IEnumerator<float> Move(IEnumerator<float> movement)
 		{
 			var v = default(float);
