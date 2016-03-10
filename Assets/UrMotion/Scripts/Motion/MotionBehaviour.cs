@@ -40,6 +40,8 @@ namespace UrMotion
 		protected LinkedList<IEnumerator<V>> velocities;
 		protected IEnumerator<V> valueEnumerator;
 
+		protected V velocity;
+		protected V start;
 		protected abstract V value {
 			get;
 			set;
@@ -111,6 +113,8 @@ namespace UrMotion
 			base.Reset();
 			elapsedTime = 0f;
 			velocities.Clear();
+			start = value;
+			velocity = default(V);
 		}
 
 		protected virtual void Update()
@@ -119,7 +123,6 @@ namespace UrMotion
 			elapsedTime += Time.deltaTime;
 			var frame_next = Mathf.FloorToInt(elapsedTime * FrameRate);
 			for (var f = frame_prev; f < frame_next; ++f) {
-				var velocity = default(V);
 				var node = velocities.First;
 				while (node != null) {
 					var next = node.Next;
@@ -131,7 +134,7 @@ namespace UrMotion
 					}
 					node = next;
 				}
-				value = Add(value, velocity);
+				value = Add(start, velocity);
 				if (IsComplete) {
 					enabled = false;
 					NotifyComplete();
