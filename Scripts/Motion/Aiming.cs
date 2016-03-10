@@ -54,6 +54,146 @@ namespace UrMotion
 			}
 		}
 
+		public static IEnumerator<float> AimRatioAt(IEnumerator<float> destination, IEnumerator<float> ratio, IEnumerator<float> current)
+		{
+			while (destination.MoveNext() && ratio.MoveNext() && current.MoveNext()) {
+				yield return (destination.Current - current.Current) * ratio.Current;
+			}
+		}
+
+		public static IEnumerator<Vector2> AimRatioAt(IEnumerator<Vector2> destination, IEnumerator<float> ratio, IEnumerator<Vector2> current)
+		{
+			while (destination.MoveNext() && ratio.MoveNext() && current.MoveNext()) {
+				yield return (destination.Current - current.Current) * ratio.Current;
+			}
+		}
+
+		public static IEnumerator<Vector3> AimRatioAt(IEnumerator<Vector3> destination, IEnumerator<float> ratio, IEnumerator<Vector3> current)
+		{
+			while (destination.MoveNext() && ratio.MoveNext() && current.MoveNext()) {
+				yield return (destination.Current - current.Current) * ratio.Current;
+			}
+		}
+
+		public static IEnumerator<Vector4> AimRatioAt(IEnumerator<Vector4> destination, IEnumerator<float> ratio, IEnumerator<Vector4> current)
+		{
+			while (destination.MoveNext() && ratio.MoveNext() && current.MoveNext()) {
+				yield return (destination.Current - current.Current) * ratio.Current;
+			}
+		}
+
+		public static IEnumerator<float> AimSpringAt(IEnumerator<float> destination, IEnumerator<float> ratio, IEnumerator<float> bounce, IEnumerator<float> current)
+		{
+			var v = default(float);
+			while (destination.MoveNext() && ratio.MoveNext() && bounce.MoveNext() && current.MoveNext()) {
+				v = v * bounce.Current + (destination.Current - current.Current) * ratio.Current;
+				yield return v;
+			}
+		}
+
+		public static IEnumerator<Vector2> AimSpringAt(IEnumerator<Vector2> destination, IEnumerator<float> ratio, IEnumerator<float> bounce, IEnumerator<Vector2> current)
+		{
+			var v = default(Vector2);
+			while (destination.MoveNext() && ratio.MoveNext() && bounce.MoveNext() && current.MoveNext()) {
+				v = v * bounce.Current + (destination.Current - current.Current) * ratio.Current;
+				yield return v;
+			}
+		}
+
+		public static IEnumerator<Vector3> AimSpringAt(IEnumerator<Vector3> destination, IEnumerator<float> ratio, IEnumerator<float> bounce, IEnumerator<Vector3> current)
+		{
+			var v = default(Vector3);
+			while (destination.MoveNext() && ratio.MoveNext() && bounce.MoveNext() && current.MoveNext()) {
+				v = v * bounce.Current + (destination.Current - current.Current) * ratio.Current;
+				yield return v;
+			}
+		}
+
+		public static IEnumerator<Vector4> AimSpringAt(IEnumerator<Vector4> destination, IEnumerator<float> ratio, IEnumerator<float> bounce, IEnumerator<Vector4> current)
+		{
+			var v = default(Vector4);
+			while (destination.MoveNext() && ratio.MoveNext() && bounce.MoveNext() && current.MoveNext()) {
+				v = v * bounce.Current + (destination.Current - current.Current) * ratio.Current;
+				yield return v;
+			}
+		}
+
+		public static IEnumerator<float> AimExpoAt(IEnumerator<float> destination, IEnumerator<float> speed, IEnumerator<float> current)
+		{
+			while (destination.MoveNext() && speed.MoveNext() && current.MoveNext()) {
+				yield return (destination.Current - current.Current) * (1f - Mathf.Exp(-speed.Current));
+			}
+		}
+
+		public static IEnumerator<Vector2> AimExpoAt(IEnumerator<Vector2> destination, IEnumerator<float> speed, IEnumerator<Vector2> current)
+		{
+			while (destination.MoveNext() && speed.MoveNext() && current.MoveNext()) {
+				yield return (destination.Current - current.Current) * (1f - Mathf.Exp(-speed.Current));
+			}
+		}
+
+		public static IEnumerator<Vector3> AimExpoAt(IEnumerator<Vector3> destination, IEnumerator<float> speed, IEnumerator<Vector3> current)
+		{
+			while (destination.MoveNext() && speed.MoveNext() && current.MoveNext()) {
+				yield return (destination.Current - current.Current) * (1f - Mathf.Exp(-speed.Current));
+			}
+		}
+
+		public static IEnumerator<Vector4> AimExpoAt(IEnumerator<Vector4> destination, IEnumerator<float> speed, IEnumerator<Vector4> current)
+		{
+			while (destination.MoveNext() && speed.MoveNext() && current.MoveNext()) {
+				yield return (destination.Current - current.Current) * (1f - Mathf.Exp(-speed.Current));
+			}
+		}
+
+		public static IEnumerator<float> AimCriticalDampingAt(IEnumerator<float> destination, IEnumerator<float> speed, IEnumerator<float> current)
+		{
+			var v = default(float);
+			while (destination.MoveNext() && speed.MoveNext() && current.MoveNext()) {
+				var omega = speed.Current;
+				var n1 = v - (current.Current - destination.Current) * (omega * omega);
+				var n2 = 1 + omega;
+				v = n1 / (n2 * n2);
+				yield return v;
+			}
+		}
+
+		public static IEnumerator<Vector2> AimCriticalDampingAt(IEnumerator<Vector2> destination, IEnumerator<float> speed, IEnumerator<Vector2> current)
+		{
+			var v = default(Vector2);
+			while (destination.MoveNext() && speed.MoveNext() && current.MoveNext()) {
+				var omega = speed.Current;
+				var n1 = v - (current.Current - destination.Current) * (omega * omega);
+				var n2 = 1 + omega;
+				v = n1 / (n2 * n2);
+				yield return v;
+			}
+		}
+
+		public static IEnumerator<Vector3> AimCriticalDampingAt(IEnumerator<Vector3> destination, IEnumerator<float> speed, IEnumerator<Vector3> current)
+		{
+			var v = default(Vector3);
+			while (destination.MoveNext() && speed.MoveNext() && current.MoveNext()) {
+				var omega = speed.Current;
+				var n1 = v - (current.Current - destination.Current) * (omega * omega);
+				var n2 = 1 + omega;
+				v = n1 / (n2 * n2);
+				yield return v;
+			}
+		}
+
+		public static IEnumerator<Vector4> AimCriticalDampingAt(IEnumerator<Vector4> destination, IEnumerator<float> speed, IEnumerator<Vector4> current)
+		{
+			var v = default(Vector4);
+			while (destination.MoveNext() && speed.MoveNext() && current.MoveNext()) {
+				var omega = speed.Current;
+				var n1 = v - (current.Current - destination.Current) * (omega * omega);
+				var n2 = 1 + omega;
+				v = n1 / (n2 * n2);
+				yield return v;
+			}
+		}
+
 		public static IEnumerator<float> AimVelocity(IEnumerator<float> destination, IEnumerator<float> speed, IEnumerator<float> current)
 		{
 			while (destination.MoveNext() && speed.MoveNext() && current.MoveNext()) {
