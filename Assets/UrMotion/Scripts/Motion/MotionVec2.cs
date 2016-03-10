@@ -2,20 +2,20 @@
 
 namespace UrMotion
 {
-	public abstract class MotionVec1<T> : MotionBehaviour<float> where T : MotionBehaviour<float>
+	public abstract class MotionVec2<T> : MotionBehaviour<Vector2> where T : MotionBehaviour<Vector2>
 	{
-		public static MotionBehaviour<float> Add(GameObject g)
+		public static MotionBehaviour<Vector2> Add(GameObject g)
 		{
 			return Get<T>(g);
 		}
 
-		override protected float Add(float a, float b)
+		override protected Vector2 Add(Vector2 a, Vector2 b)
 		{
 			return a + b;
 		}
 	}
 
-	public abstract class MotionVec1T<T> : MotionVec1<T> where T : MotionBehaviour<float>
+	public abstract class MotionVec2T<T> : MotionVec2<T> where T : MotionBehaviour<Vector2>
 	{
 		public abstract Vector3 vector { get; set; }
 
@@ -27,7 +27,7 @@ namespace UrMotion
 		}
 	}
 
-	public abstract class MotionVec1P<T> : MotionVec1T<T> where T : MotionBehaviour<float>
+	public abstract class MotionVec2P<T> : MotionVec2T<T> where T : MotionBehaviour<Vector2>
 	{
 		override public Vector3 vector {
 			get {
@@ -39,7 +39,7 @@ namespace UrMotion
 		}
 	}
 
-	public abstract class MotionVec1WP<T> : MotionVec1T<T> where T : MotionBehaviour<float>
+	public abstract class MotionVec2WP<T> : MotionVec2T<T> where T : MotionBehaviour<Vector2>
 	{
 		override public Vector3 vector {
 			get {
@@ -51,7 +51,7 @@ namespace UrMotion
 		}
 	}
 
-	public abstract class MotionVec1R<T> : MotionVec1T<T> where T : MotionBehaviour<float>
+	public abstract class MotionVec2R<T> : MotionVec2T<T> where T : MotionBehaviour<Vector2>
 	{
 		override public Vector3 vector {
 			get {
@@ -63,7 +63,7 @@ namespace UrMotion
 		}
 	}
 
-	public abstract class MotionVec1WR<T> : MotionVec1T<T> where T : MotionBehaviour<float>
+	public abstract class MotionVec2WR<T> : MotionVec2T<T> where T : MotionBehaviour<Vector2>
 	{
 		override public Vector3 vector {
 			get {
@@ -75,7 +75,7 @@ namespace UrMotion
 		}
 	}
 
-	public abstract class MotionVec1S<T> : MotionVec1T<T> where T : MotionBehaviour<float>
+	public abstract class MotionVec2S<T> : MotionVec2T<T> where T : MotionBehaviour<Vector2>
 	{
 		override public Vector3 vector {
 			get {

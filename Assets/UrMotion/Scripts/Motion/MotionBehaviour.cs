@@ -6,9 +6,29 @@ using System.Linq.Expressions;
 
 namespace UrMotion
 {
-	public abstract class MotionBehaviour<V> : MonoBehaviour
+	public abstract class MotionBehaviourBase : MonoBehaviour
 	{
-		public static T Get<T, V>(GameObject g) where T : MotionBehaviour<V>
+		public abstract float FrameRate { get; set; }
+		public abstract bool IsComplete { get; }
+		public event Callback OnComplete;
+
+		protected virtual void Reset()
+		{
+			OnComplete = null;
+		}
+
+		protected virtual void NotifyComplete()
+		{
+			if (OnComplete != null) {
+				var callback = OnComplete;
+				OnComplete = null;
+				callback();
+			}
+		}
+	}
+	public abstract class MotionBehaviour<V> : MotionBehaviourBase
+	{
+		public static T Get<T>(GameObject g) where T : MotionBehaviour<V>
 		{
 			var motion = g.GetComponent<T>() ?? g.AddComponent<T>();
 			motion.Reset();
@@ -18,12 +38,35 @@ namespace UrMotion
 
 		protected float elapsedTime;
 		protected LinkedList<IEnumerator<V>> velocities;
+		protected IEnumerator<V> valueEnumerator;
 
-		protected abstract V value { get; set; }
+		protected abstract V value {
+			get;
+			set;
+		}
 
-		public float FrameRate { get; set; }
-		public float ElapsedTime { get { return elapsedTime; } }
-		public event Callback OnComplete;
+		public float ElapsedTime {
+			get {
+				return elapsedTime;
+			}
+		}
+
+		public IEnumerator<V> ValueEnumerator {
+			get {
+				return valueEnumerator ?? (valueEnumerator = GetValueEnumerator());
+			}
+		}
+
+		override public float FrameRate {
+			get;
+			set;
+		}
+
+		override public bool IsComplete {
+			get {
+				return velocities.First == null;
+			}
+		}
 
 		public MotionBehaviour()
 		{
@@ -56,11 +99,18 @@ namespace UrMotion
 			}
 		}
 
-		protected virtual void Reset()
+		protected virtual IEnumerator<V> GetValueEnumerator()
 		{
+			for (;;) {
+				yield return value;
+			}
+		}
+
+		override protected void Reset()
+		{
+			base.Reset();
 			elapsedTime = 0f;
 			velocities.Clear();
-			OnComplete = null;
 		}
 
 		protected virtual void Update()
@@ -82,13 +132,10 @@ namespace UrMotion
 					node = next;
 				}
 				value = Add(value, velocity);
-			}
-			if (velocities.First == null) {
-				enabled = false;
-				if (OnComplete != null) {
-					var callback = OnComplete;
-					OnComplete = null;
-					callback();
+				if (IsComplete) {
+					enabled = false;
+					NotifyComplete();
+					break;
 				}
 			}
 		}

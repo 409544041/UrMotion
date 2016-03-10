@@ -68,5 +68,45 @@ namespace UrMotion
 				f += 1.0f;
 			}
 		}
+
+		public static IEnumerator<float> Cos(IEnumerator<float> radius, float freq, float fps = 0f)
+		{
+			ValidateFrameRate(ref fps);
+			var f = 0f;
+			while (radius.MoveNext()) {
+				yield return Mathf.Cos((f / fps) * Mathf.PI * 2f * freq) * radius.Current;
+				f += 1.0f;
+			}
+		}
+
+		public static IEnumerator<Vector2> Cos(IEnumerator<Vector2> radius, float freq, float fps = 0f)
+		{
+			ValidateFrameRate(ref fps);
+			var f = 0f;
+			while (radius.MoveNext()) {
+				yield return Mathf.Cos((f / fps) * Mathf.PI * 2f * freq) * radius.Current;
+				f += 1.0f;
+			}
+		}
+
+		public static IEnumerator<Vector3> Cos(IEnumerator<Vector3> radius, float freq, float fps = 0f)
+		{
+			ValidateFrameRate(ref fps);
+			var f = 0f;
+			while (radius.MoveNext()) {
+				yield return Mathf.Cos((f / fps) * Mathf.PI * 2f * freq) * radius.Current;
+				f += 1.0f;
+			}
+		}
+
+		public static IEnumerator<Vector4> Cos(IEnumerator<Vector4> radius, float freq, float fps = 0f)
+		{
+			ValidateFrameRate(ref fps);
+			var f = 0f;
+			while (radius.MoveNext()) {
+				yield return Mathf.Cos((f / fps) * Mathf.PI * 2f * freq) * radius.Current;
+				f += 1.0f;
+			}
+		}
 	}
 }
