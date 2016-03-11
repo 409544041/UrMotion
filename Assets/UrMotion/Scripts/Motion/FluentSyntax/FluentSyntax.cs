@@ -25,20 +25,30 @@ namespace UrMotion
 
 		public static void Resolve<V>(MotionBehaviour<V> self, Action<MotionBehaviour<float>> vec1, Action<MotionBehaviour<Vector2>> vec2, Action<MotionBehaviour<Vector3>> vec3, Action<MotionBehaviour<Vector4>> vec4)
 		{
+			Resolve<V>(
+				() => vec1((MotionBehaviour<float  >)(object)self),
+				() => vec2((MotionBehaviour<Vector2>)(object)self),
+				() => vec3((MotionBehaviour<Vector3>)(object)self),
+				() => vec4((MotionBehaviour<Vector4>)(object)self)
+			);
+		}
+
+		public static void Resolve<V>(Action vec1, Action vec2, Action vec3, Action vec4)
+		{
 			if (typeof(V) == typeof(float)) {
-				vec1((MotionBehaviour<float>)(object)self);
+				vec1();
 				return;
 			}
 			if (typeof(V) == typeof(Vector2)) {
-				vec2((MotionBehaviour<Vector2>)(object)self);
+				vec2();
 				return;
 			}
 			if (typeof(V) == typeof(Vector3)) {
-				vec3((MotionBehaviour<Vector3>)(object)self);
+				vec3();
 				return;
 			}
 			if (typeof(V) == typeof(Vector4)) {
-				vec4((MotionBehaviour<Vector4>)(object)self);
+				vec4();
 				return;
 			}
 			throw new ArgumentException(string.Format("{0} is not valid.", typeof(V).FullName));

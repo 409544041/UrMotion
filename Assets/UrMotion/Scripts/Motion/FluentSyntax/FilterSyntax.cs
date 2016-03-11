@@ -66,5 +66,71 @@ namespace UrMotion
 		{
 			return Discrete<V, Func<float>>(self, interval);
 		}
+
+		public static IEnumerator<V> Map<V>(this IEnumerator<V> source, Func<V, V> value)
+		{
+			return Filter.Map<V>(source, value);
+		}
+
+		public static IEnumerator<V> Offset<V, T>(this IEnumerator<V> source, T value)
+		{
+			var res = default(IEnumerator<V>);
+			Syntax.Resolve<V>(
+				() => res = Filter.Offset(source as IEnumerator<float  >, Syntax.AsEnumerator<float,   T>(value)) as IEnumerator<V>,
+				() => res = Filter.Offset(source as IEnumerator<Vector2>, Syntax.AsEnumerator<Vector2, T>(value)) as IEnumerator<V>,
+				() => res = Filter.Offset(source as IEnumerator<Vector3>, Syntax.AsEnumerator<Vector3, T>(value)) as IEnumerator<V>,
+				() => res = Filter.Offset(source as IEnumerator<Vector4>, Syntax.AsEnumerator<Vector4, T>(value)) as IEnumerator<V>
+			);
+			return res;
+		}
+
+		public static IEnumerator<V> Amplify<V, T>(this IEnumerator<V> source, T value)
+		{
+			var res = default(IEnumerator<V>);
+			Syntax.Resolve<V>(
+				() => res = Filter.Amplify(source as IEnumerator<float  >, Syntax.AsEnumerator<float, T>(value)) as IEnumerator<V>,
+				() => res = Filter.Amplify(source as IEnumerator<Vector2>, Syntax.AsEnumerator<float, T>(value)) as IEnumerator<V>,
+				() => res = Filter.Amplify(source as IEnumerator<Vector3>, Syntax.AsEnumerator<float, T>(value)) as IEnumerator<V>,
+				() => res = Filter.Amplify(source as IEnumerator<Vector4>, Syntax.AsEnumerator<float, T>(value)) as IEnumerator<V>
+			);
+			return res;
+		}
+
+		public static IEnumerator<V> Discrete<V, T>(this IEnumerator<V> source, T interval)
+		{
+			var res = default(IEnumerator<V>);
+			Syntax.Resolve<V>(
+				() => res = Filter.Discrete(source as IEnumerator<float  >, Syntax.AsEnumerator<float, T>(interval)) as IEnumerator<V>,
+				() => res = Filter.Discrete(source as IEnumerator<Vector2>, Syntax.AsEnumerator<float, T>(interval)) as IEnumerator<V>,
+				() => res = Filter.Discrete(source as IEnumerator<Vector3>, Syntax.AsEnumerator<float, T>(interval)) as IEnumerator<V>,
+				() => res = Filter.Discrete(source as IEnumerator<Vector4>, Syntax.AsEnumerator<float, T>(interval)) as IEnumerator<V>
+			);
+			return res;
+		}
+
+		public static IEnumerator<float> ToAngle(this IEnumerator<Vector2> source)
+		{
+			return Filter.ToAngle(source);
+		}
+
+		public static IEnumerator<Vector3> ToAngle(this IEnumerator<Vector3> source)
+		{
+			return Filter.ToAngle(source);
+		}
+
+		public static IEnumerator<V> Offset<V>(this IEnumerator<V> source, Func<V> value)
+		{
+			return Offset<V, Func<V>>(source, value);
+		}
+
+		public static IEnumerator<V> Amplify<V>(this IEnumerator<V> source, Func<float> value)
+		{
+			return Amplify<V, Func<float>>(source, value);
+		}
+
+		public static IEnumerator<V> Discrete<V>(this IEnumerator<V> source, Func<float> interval)
+		{
+			return Discrete<V, Func<float>>(source, interval);
+		}
 	}
 }

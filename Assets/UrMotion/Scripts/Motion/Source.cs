@@ -15,6 +15,13 @@ namespace UrMotion
 			}
 		}
 
+		public class SourceDimension<V> {}
+		public static readonly SourceDimension<float> Float = new SourceDimension<float>();
+		public static readonly SourceDimension<float> Single = new SourceDimension<float>();
+		public static readonly SourceDimension<Vector2> Vector2 = new SourceDimension<Vector2>();
+		public static readonly SourceDimension<Vector3> Vector3 = new SourceDimension<Vector3>();
+		public static readonly SourceDimension<Vector4> Vector4 = new SourceDimension<Vector4>();
+
 		public static IEnumerator<V> Constant<V>(V val)
 		{
 			for (;;) {
