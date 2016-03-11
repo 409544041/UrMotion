@@ -95,5 +95,20 @@ namespace UrMotion
 				}
 			}
 		}
+
+		public static IEnumerator<float> ToAngle(IEnumerator<Vector2> vector)
+		{
+			while (vector.MoveNext()) {
+				var v = vector.Current;
+				yield return Mathf.Atan2(v.y, v.x) * Mathf.Rad2Deg;
+			}
+		}
+
+		public static IEnumerator<Vector3> ToAngle(IEnumerator<Vector3> vector)
+		{
+			while (vector.MoveNext()) {
+				yield return Quaternion.LookRotation(vector.Current).eulerAngles;
+			}
+		}
 	}
 }
