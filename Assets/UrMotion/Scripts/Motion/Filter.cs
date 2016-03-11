@@ -20,6 +20,34 @@ namespace UrMotion
 			}
 		}
 
+		public static IEnumerator<float> Negate(IEnumerator<float> source)
+		{
+			while (source.MoveNext()) {
+				yield return -source.Current;
+			}
+		}
+
+		public static IEnumerator<Vector2> Negate(IEnumerator<Vector2> source)
+		{
+			while (source.MoveNext()) {
+				yield return source.Current * -1f;
+			}
+		}
+
+		public static IEnumerator<Vector3> Negate(IEnumerator<Vector3> source)
+		{
+			while (source.MoveNext()) {
+				yield return source.Current * -1f;
+			}
+		}
+
+		public static IEnumerator<Vector4> Negate(IEnumerator<Vector4> source)
+		{
+			while (source.MoveNext()) {
+				yield return source.Current * -1f;
+			}
+		}
+
 		public static IEnumerator<float> Offset(IEnumerator<float> source, IEnumerator<float> value)
 		{
 			while (source.MoveNext() && value.MoveNext()) {
