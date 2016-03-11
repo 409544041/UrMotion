@@ -109,6 +109,18 @@ namespace UrMotion
 			}
 		}
 
+		public static IEnumerator<Vector2> Circular(IEnumerator<float> radius, float speed, float fps = 0f)
+		{
+			ValidateFrameRate(ref fps);
+			var f = 0f;
+			while (radius.MoveNext()) {
+				var x = Mathf.Cos((f / fps) * Mathf.PI * 2f * speed) * radius.Current;
+				var y = Mathf.Sin((f / fps) * Mathf.PI * 2f * speed) * radius.Current;
+				yield return new Vector2(x, y);
+				f += 1.0f;
+			}
+		}
+
 		public static IEnumerator<Vector2> Lissajous(IEnumerator<float> A, IEnumerator<float> B, float a, float b, float delta, float fps = 0f)
 		{
 			ValidateFrameRate(ref fps);
