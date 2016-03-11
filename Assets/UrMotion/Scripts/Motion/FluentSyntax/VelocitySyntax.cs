@@ -25,6 +25,18 @@ namespace UrMotion
 			return self;
 		}
 
+		public static MotionBehaviour<Vector2> Angle<T>(this MotionBehaviour<Vector2> self, T angle)
+		{
+			self.Wrap((v) => Vel.Angle(v, Syntax.AsEnumerator<float, T>(angle)));
+			return self;
+		}
+
+		public static MotionBehaviour<Vector3> Angle<T>(this MotionBehaviour<Vector3> self, T angle)
+		{
+			self.Wrap((v) => Vel.Angle(v, Syntax.AsEnumerator<Vector3, T>(angle)));
+			return self;
+		}
+
 		public static MotionBehaviour<V> Velocity<V>(this MotionBehaviour<V> self, Func<V> source)
 		{
 			return Velocity<V, Func<V>>(self, source);
@@ -33,6 +45,16 @@ namespace UrMotion
 		public static MotionBehaviour<V> Accel<V>(this MotionBehaviour<V> self, Func<V> accel)
 		{
 			return Accel<V, Func<V>>(self, accel);
+		}
+
+		public static MotionBehaviour<Vector2> Angle(this MotionBehaviour<Vector2> self, Func<float> angle)
+		{
+			return Angle<Func<float>>(self, angle);
+		}
+
+		public static MotionBehaviour<Vector3> Angle(this MotionBehaviour<Vector3> self, Func<Vector3> angle)
+		{
+			return Angle<Func<Vector3>>(self, angle);
 		}
 	}
 }

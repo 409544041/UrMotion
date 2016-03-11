@@ -46,5 +46,19 @@ namespace UrMotion
 				yield return v;
 			}
 		}
+
+		public static IEnumerator<Vector2> Angle(IEnumerator<Vector2> source, IEnumerator<float> angle)
+		{
+			while (source.MoveNext() && angle.MoveNext()) {
+				yield return Quaternion.Euler(0f, 0f, angle.Current) * source.Current;
+			}
+		}
+
+		public static IEnumerator<Vector3> Angle(IEnumerator<Vector3> source, IEnumerator<Vector3> angle)
+		{
+			while (source.MoveNext() && angle.MoveNext()) {
+				yield return Quaternion.Euler(angle.Current) * source.Current;
+			}
+		}
 	}
 }
