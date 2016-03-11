@@ -30,6 +30,12 @@ namespace UrMotion
 			return self;
 		}
 
+		public static MotionBehaviour<Vector2> Circular<T>(this MotionBehaviour<Vector2> self, T radius, float speed)
+		{
+			self.Add(Movement.Circular(Syntax.AsEnumerator<float, T>(radius), speed, self.FrameRate));
+			return self;
+		}
+
 		public static MotionBehaviour<Vector2> Lissajous<T1, T2>(this MotionBehaviour<Vector2> self, T1 A, T2 B, float a, float b, float delta)
 		{
 			self.Add(Movement.Lissajous(Syntax.AsEnumerator<float, T1>(A), Syntax.AsEnumerator<float, T2>(B), a, b, delta, self.FrameRate));
@@ -44,6 +50,16 @@ namespace UrMotion
 		public static MotionBehaviour<V> Cos<V>(this MotionBehaviour<V> self, Func<V> radius, float freq)
 		{
 			return Cos<V, Func<V>>(self, radius, freq);
+		}
+
+		public static MotionBehaviour<Vector2> Circular(this MotionBehaviour<Vector2> self, Func<float> radius, float speed)
+		{
+			return Circular<Func<float>>(self, radius, speed);
+		}
+
+		public static MotionBehaviour<Vector2> Lissajous(this MotionBehaviour<Vector2> self, Func<float> A, Func<float> B, float a, float b, float delta)
+		{
+			return Lissajous<Func<float>, Func<float>>(self, A, B, a, b, delta);
 		}
 	}
 }

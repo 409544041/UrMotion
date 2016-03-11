@@ -46,6 +46,11 @@ namespace UrMotion
 			return Move(Source.Cos(radius, freq, fps));
 		}
 
+		public static IEnumerator<Vector2> Circular(IEnumerator<float> radius, float speed, float fps)
+		{
+			return Move(Source.Circular(radius, speed, fps));
+		}
+
 		public static IEnumerator<Vector2> Lissajous(IEnumerator<float> A, IEnumerator<float> B, float a, float b, float delta, float fps)
 		{
 			return Move(Source.Lissajous(A, B, a, b, delta, fps));
