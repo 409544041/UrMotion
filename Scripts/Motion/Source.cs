@@ -132,5 +132,44 @@ namespace UrMotion
 				f += 1.0f;
 			}
 		}
+
+		public static IEnumerator<Vector2> Cycloid(IEnumerator<float> A, IEnumerator<float> B, float rm, float speed, float fps = 0f)
+		{
+			ValidateFrameRate(ref fps);
+			var f = 0f;
+			while (A.MoveNext() && B.MoveNext()) {
+				var t = (f / fps) * Mathf.PI * 2f * speed;
+				var x = A.Current * (rm * (t - Mathf.Sin(t)));
+				var y = B.Current * (rm * (1f - Mathf.Cos(t)));
+				yield return new Vector2(x, y);
+				f += 1.0f;
+			}
+		}
+
+		public static IEnumerator<Vector2> Epicycloid(IEnumerator<float> A, IEnumerator<float> B, float rc, float rm, float speed, float fps = 0f)
+		{
+			ValidateFrameRate(ref fps);
+			var f = 0f;
+			while (A.MoveNext() && B.MoveNext()) {
+				var t = (f / fps) * Mathf.PI * 2f * speed;
+				var x = A.Current * ((rc + rm) * Mathf.Cos(t) - rm * Mathf.Cos((rc + rm) / rm * t));
+				var y = B.Current * ((rc + rm) * Mathf.Sin(t) - rm * Mathf.Sin((rc + rm) / rm * t));
+				yield return new Vector2(x, y);
+				f += 1.0f;
+			}
+		}
+
+		public static IEnumerator<Vector2> Hypocycloid(IEnumerator<float> A, IEnumerator<float> B, float rc, float rm, float speed, float fps = 0f)
+		{
+			ValidateFrameRate(ref fps);
+			var f = 0f;
+			while (A.MoveNext() && B.MoveNext()) {
+				var t = (f / fps) * Mathf.PI * 2f * speed;
+				var x = A.Current * ((rc - rm) * Mathf.Cos(t) + rm * Mathf.Cos((rc - rm) / rm * t));
+				var y = B.Current * ((rc - rm) * Mathf.Sin(t) - rm * Mathf.Sin((rc - rm) / rm * t));
+				yield return new Vector2(x, y);
+				f += 1.0f;
+			}
+		}
 	}
 }

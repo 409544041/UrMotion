@@ -56,6 +56,21 @@ namespace UrMotion
 			return Move(Source.Lissajous(A, B, a, b, delta, fps));
 		}
 
+		public static IEnumerator<Vector2> Cycloid(IEnumerator<float> A, IEnumerator<float> B, float rm, float speed, float fps)
+		{
+			return Move(Source.Cycloid(A, B, rm, speed, fps));
+		}
+
+		public static IEnumerator<Vector2> Epicycloid(IEnumerator<float> A, IEnumerator<float> B, float rc, float rm, float speed, float fps)
+		{
+			return Move(Source.Epicycloid(A, B, rc, rm, speed, fps));
+		}
+
+		public static IEnumerator<Vector2> Hypocycloid(IEnumerator<float> A, IEnumerator<float> B, float rc, float rm, float speed, float fps)
+		{
+			return Move(Source.Hypocycloid(A, B, rc, rm, speed, fps));
+		}
+
 		static IEnumerator<float> Move(IEnumerator<float> movement)
 		{
 			var v = default(float);

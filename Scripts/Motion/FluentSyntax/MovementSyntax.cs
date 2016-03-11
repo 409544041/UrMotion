@@ -42,6 +42,24 @@ namespace UrMotion
 			return self;
 		}
 
+		public static MotionBehaviour<Vector2> Cycloid<T1, T2>(this MotionBehaviour<Vector2> self, T1 A, T2 B, float rm, float speed)
+		{
+			self.Add(Movement.Cycloid(Syntax.AsEnumerator<float, T1>(A), Syntax.AsEnumerator<float, T2>(B), rm , speed, self.FrameRate));
+			return self;
+		}
+
+		public static MotionBehaviour<Vector2> Epicycloid<T1, T2>(this MotionBehaviour<Vector2> self, T1 A, T2 B, float rc, float rm, float speed)
+		{
+			self.Add(Movement.Epicycloid(Syntax.AsEnumerator<float, T1>(A), Syntax.AsEnumerator<float, T2>(B), rc, rm , speed, self.FrameRate));
+			return self;
+		}
+
+		public static MotionBehaviour<Vector2> Hypocycloid<T1, T2>(this MotionBehaviour<Vector2> self, T1 A, T2 B, float rc, float rm, float speed)
+		{
+			self.Add(Movement.Hypocycloid(Syntax.AsEnumerator<float, T1>(A), Syntax.AsEnumerator<float, T2>(B), rc, rm , speed, self.FrameRate));
+			return self;
+		}
+
 		public static MotionBehaviour<V> Sin<V>(this MotionBehaviour<V> self, Func<V> radius, float freq)
 		{
 			return Sin<V, Func<V>>(self, radius, freq);
@@ -60,6 +78,21 @@ namespace UrMotion
 		public static MotionBehaviour<Vector2> Lissajous(this MotionBehaviour<Vector2> self, Func<float> A, Func<float> B, float a, float b, float delta)
 		{
 			return Lissajous<Func<float>, Func<float>>(self, A, B, a, b, delta);
+		}
+
+		public static MotionBehaviour<Vector2> Cycloid(this MotionBehaviour<Vector2> self, Func<float> A, Func<float> B, float rm, float speed)
+		{
+			return Cycloid<Func<float>, Func<float>>(self, A, B, rm, speed);
+		}
+
+		public static MotionBehaviour<Vector2> Epicycloid(this MotionBehaviour<Vector2> self, Func<float> A, Func<float> B, float rc, float rm, float speed)
+		{
+			return Epicycloid<Func<float>, Func<float>>(self, A, B, rc, rm, speed);
+		}
+
+		public static MotionBehaviour<Vector2> Hypocycloid(this MotionBehaviour<Vector2> self, Func<float> A, Func<float> B, float rc, float rm, float speed)
+		{
+			return Hypocycloid<Func<float>, Func<float>>(self, A, B, rc, rm, speed);
 		}
 	}
 }
