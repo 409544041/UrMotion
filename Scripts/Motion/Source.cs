@@ -108,5 +108,17 @@ namespace UrMotion
 				f += 1.0f;
 			}
 		}
+
+		public static IEnumerator<Vector2> Lissajous(IEnumerator<float> A, IEnumerator<float> B, float a, float b, float delta, float fps = 0f)
+		{
+			ValidateFrameRate(ref fps);
+			var f = 0f;
+			while (A.MoveNext() && B.MoveNext()) {
+				var x = A.Current * Mathf.Cos((f / fps) * Mathf.PI * 2f * a);
+				var y = B.Current * Mathf.Sin((f / fps) * Mathf.PI * 2f * b + delta);
+				yield return new Vector2(x, y);
+				f += 1.0f;
+			}
+		}
 	}
 }
