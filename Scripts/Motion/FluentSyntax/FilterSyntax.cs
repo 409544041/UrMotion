@@ -19,6 +19,17 @@ namespace UrMotion
 			return self;
 		}
 
+		public static MotionBehaviour<V> Negate<V>(this MotionBehaviour<V> self)
+		{
+			Syntax.Resolve<V>(self,
+				(e) => e.Wrap((v) => Filter.Negate(v)),
+				(e) => e.Wrap((v) => Filter.Negate(v)),
+				(e) => e.Wrap((v) => Filter.Negate(v)),
+				(e) => e.Wrap((v) => Filter.Negate(v))
+			);
+			return self;
+		}
+
 		public static MotionBehaviour<V> Offset<V, T>(this MotionBehaviour<V> self, T value)
 		{
 			Syntax.Resolve<V>(self,
@@ -80,6 +91,18 @@ namespace UrMotion
 				() => res = Filter.Offset(source as IEnumerator<Vector2>, Syntax.AsEnumerator<Vector2, T>(value)) as IEnumerator<V>,
 				() => res = Filter.Offset(source as IEnumerator<Vector3>, Syntax.AsEnumerator<Vector3, T>(value)) as IEnumerator<V>,
 				() => res = Filter.Offset(source as IEnumerator<Vector4>, Syntax.AsEnumerator<Vector4, T>(value)) as IEnumerator<V>
+			);
+			return res;
+		}
+
+		public static IEnumerator<V> Negate<V>(this IEnumerator<V> source)
+		{
+			var res = default(IEnumerator<V>);
+			Syntax.Resolve<V>(
+				() => res = Filter.Negate(source as IEnumerator<float  >) as IEnumerator<V>,
+				() => res = Filter.Negate(source as IEnumerator<Vector2>) as IEnumerator<V>,
+				() => res = Filter.Negate(source as IEnumerator<Vector3>) as IEnumerator<V>,
+				() => res = Filter.Negate(source as IEnumerator<Vector4>) as IEnumerator<V>
 			);
 			return res;
 		}
