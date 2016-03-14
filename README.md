@@ -3,7 +3,7 @@
 UrMotion (Your motion) is a brand new simple & flexible motion engine for Unity.
 It enables you to create non time-based complex animations on your script easy and fast.
 
-To start using UrMotion, copy `Assets/UrMotion` directoy to your project and write `using UrMotion`; in your code.
+To start using UrMotion, copy `Assets/UrMotion` directoy to your project and write `using UrMotion;` in your code.
 
 ```C#
 using UnityEngine;
