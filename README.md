@@ -3,37 +3,42 @@
 UrMotion (Your motion) is a brand new simple & flexible motion engine for Unity.
 It enables you to create non time-based complex animations on your script easy and fast.
 
-## Features
-
-### Simple & Lightweight
-
-UrMotion is super simple. Core system (`MotionBehaviour.cs`) is about 100 lines code. Simple is powerful.
-
-### Easy to use
+To start using UrMotion, copy Assets/UrMotion directoy to your project and write using UrMotion; in your code.
 
 ```C#
-// Move 3 units everyframe.
-g.MotionX().Velocity(3f);
+using UnityEngine;
+using System.Collections;
+using UrMotion;
 ```
-
-That's all.
-
-### Fluent Syntax
-
-```C#
-// Move 3 units and accel 1 unit everyframe.
-g.MotionX().Velocity(3f).Accel(1f);
-```
-
-### Unity friendly
-
-UrMotion's design is completely focusing on Unity.
-It works as a simple Unity component and follows a Unity execution flow.
-
-## Setup
-
-Simply copy a `UrMotion` directory to your Unity project. `UrMotion - Example` directory is not needed.
 
 ## Examples
 
-Open a `UrMotion - Example/Scenes/Example.unity` scene. All code is written in `UrMotion - Example/Scripts/Example.cs`.
+### Simply uniform move
+
+```C#
+g.MotionX().Velocity(3f);
+```
+
+![velocity_x](https://cloud.githubusercontent.com/assets/1482297/13745657/a492e7fa-ea32-11e5-98dd-22f61cdd7617.gif)
+
+### Simply uniform move (Moving Y)
+
+```C#
+g.MotionY().Velocity(3f);
+```
+
+![velocity_y](https://cloud.githubusercontent.com/assets/1482297/13745812/6cbe3ffe-ea33-11e5-8cf1-6b1a64b02502.gif)
+
+### Simply uniform move (Moving X & Y)
+
+```C#
+g.MotionXY().Velocity(new Vector2(3f, 2f));
+```
+
+![velocity_xy](https://cloud.githubusercontent.com/assets/1482297/13745885/ce749d06-ea33-11e5-8848-dbd05516affa.gif)
+
+## License
+
+Copyright 2016 Oink Games, Inc. and other contributors.
+
+Code licensed under the MIT License: http://opensource.org/licenses/MIT
