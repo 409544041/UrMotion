@@ -138,5 +138,71 @@ namespace UrMotion
 				yield return Quaternion.LookRotation(vector.Current).eulerAngles;
 			}
 		}
+
+		public static IEnumerator<float> Magnitude(IEnumerator<Vector2> vector)
+		{
+			while (vector.MoveNext()) {
+				yield return vector.Current.magnitude;
+			}
+		}
+
+		public static IEnumerator<float> Magnitude(IEnumerator<Vector3> vector)
+		{
+			while (vector.MoveNext()) {
+				yield return vector.Current.magnitude;
+			}
+		}
+
+		public static IEnumerator<float> Magnitude(IEnumerator<Vector4> vector)
+		{
+			while (vector.MoveNext()) {
+				yield return vector.Current.magnitude;
+			}
+		}
+
+		public static IEnumerator<float> SqrMagnitude(IEnumerator<Vector2> vector)
+		{
+			while (vector.MoveNext()) {
+				yield return vector.Current.sqrMagnitude;
+			}
+		}
+
+		public static IEnumerator<float> SqrMagnitude(IEnumerator<Vector3> vector)
+		{
+			while (vector.MoveNext()) {
+				yield return vector.Current.sqrMagnitude;
+			}
+		}
+
+		public static IEnumerator<float> SqrMagnitude(IEnumerator<Vector4> vector)
+		{
+			while (vector.MoveNext()) {
+				yield return vector.Current.sqrMagnitude;
+			}
+		}
+
+		public static IEnumerator<Vector2> ToVector2(IEnumerator<float> value)
+		{
+			while (value.MoveNext()) {
+				var val = value.Current;
+				yield return new Vector2(val, val);
+			}
+		}
+
+		public static IEnumerator<Vector3> ToVector3(IEnumerator<float> value)
+		{
+			while (value.MoveNext()) {
+				var val = value.Current;
+				yield return new Vector3(val, val, val);
+			}
+		}
+
+		public static IEnumerator<Vector4> ToVector4(IEnumerator<float> value)
+		{
+			while (value.MoveNext()) {
+				var val = value.Current;
+				yield return new Vector4(val, val, val, val);
+			}
+		}
 	}
 }

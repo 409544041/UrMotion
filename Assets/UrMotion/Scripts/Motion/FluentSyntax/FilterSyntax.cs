@@ -155,5 +155,50 @@ namespace UrMotion
 		{
 			return Discrete<V, Func<float>>(source, interval);
 		}
+
+		public static IEnumerator<float> Magnitude(this IEnumerator<Vector2> source)
+		{
+			return Filter.Magnitude(source);
+		}
+
+		public static IEnumerator<float> Magnitude(this IEnumerator<Vector3> source)
+		{
+			return Filter.Magnitude(source);
+		}
+
+		public static IEnumerator<float> Magnitude(this IEnumerator<Vector4> source)
+		{
+			return Filter.Magnitude(source);
+		}
+
+		public static IEnumerator<float> SqrMagnitude(this IEnumerator<Vector2> source)
+		{
+			return Filter.SqrMagnitude(source);
+		}
+
+		public static IEnumerator<float> SqrMagnitude(this IEnumerator<Vector3> source)
+		{
+			return Filter.SqrMagnitude(source);
+		}
+
+		public static IEnumerator<float> SqrMagnitude(this IEnumerator<Vector4> source)
+		{
+			return Filter.SqrMagnitude(source);
+		}
+
+		public static IEnumerator<Vector2> ToVector2(this IEnumerator<float> source)
+		{
+			return Filter.ToVector2(source);
+		}
+
+		public static IEnumerator<Vector3> ToVector3(this IEnumerator<float> source)
+		{
+			return Filter.ToVector3(source);
+		}
+
+		public static IEnumerator<Vector4> ToVector4(this IEnumerator<float> source)
+		{
+			return Filter.ToVector4(source);
+		}
 	}
 }
