@@ -67,6 +67,17 @@ g.MotionX().AccelByRatio(10f, 0.9f);
 
 ![accel_by_ratio](https://cloud.githubusercontent.com/assets/1482297/13765144/babeb15a-ea99-11e5-9eb0-7dd14b8e1482.gif)
 
+### Finish velocity effect
+
+Finish velocity effect if it magnitude is less than 0.01f.
+Then, destroy a GameObject.
+
+```C#
+g.MotionX().AccelByRatio(10f, 0.9f).LiveThreshold(0.01f).Then(() => Destroy(g));
+```
+
+![complete_velocity](https://cloud.githubusercontent.com/assets/1482297/13765840/5bfe617c-eaa0-11e5-87ac-8572d7a771c4.gif)
+
 ## Complex motion examples
 
 ### Parabola
