@@ -136,7 +136,7 @@ g.MotionP().AimCriticalDampingAt(p, 0.15f);
 ### Perlin noise
 
 ```C#
-g.MotionP().Perlin(new Vector2(0.4f, 0.8f));
+g.MotionP().Perlin(new Vector2(0.4f, 0.8f)).AmplifyComponents(new Vector2(3f, 2f));
 ```
 
 ![perlin](https://cloud.githubusercontent.com/assets/1482297/13772583/4a0903e0-ead8-11e5-82a5-e15678af3283.gif)
