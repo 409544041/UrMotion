@@ -91,6 +91,48 @@ g.MotionP().Lissajous(83f, 51f, 0.6f, 1.2f, 0f);
 
 ![lissajous](https://cloud.githubusercontent.com/assets/1482297/13766843/d274a156-eaa8-11e5-887e-fbf4a3f502b3.gif)
 
+### Aiming with uniform move
+
+An aiming method produce a velocity that makes a GameObject go toward the specified position.
+
+```C#
+g.MotionP().AimAt(p, 10f);
+```
+
+![aim](https://cloud.githubusercontent.com/assets/1482297/13769120/6018c26e-eac0-11e5-8bdf-45400aef0136.gif)
+
+### Aiming with common ratio
+
+```C#
+g.MotionP().AimRatioAt(p, 0.15f);
+```
+
+![aim_ratio](https://cloud.githubusercontent.com/assets/1482297/13769156/b445e3a8-eac0-11e5-9437-a498f5efed44.gif)
+
+### Aiming with spring move
+
+```C#
+g.MotionP().AimSpringAt(p, 0.15f, 0.8f);
+```
+
+![aim_spring](https://cloud.githubusercontent.com/assets/1482297/13769261/98ecd9ee-eac1-11e5-88d5-17f898f569bd.gif)
+
+### Aiming with exponential interpolation
+
+```C#
+g.MotionP().AimExpoAt(p, 0.15f);
+```
+
+![aim_expo](https://cloud.githubusercontent.com/assets/1482297/13769301/e35d8cda-eac1-11e5-8a2c-0a37af14768b.gif)
+
+### Aiming with critically damped spring smoothing
+
+```C#
+g.MotionP().AimCriticalDampingAt(p, 0.15f);
+```
+
+![aim_critical](https://cloud.githubusercontent.com/assets/1482297/13769357/4aac3f44-eac2-11e5-914d-5cba808441b1.gif)
+
 ### Timed parameter
 
 Change velocity by time with sin curve.
@@ -197,6 +239,27 @@ g.MotionS().AccelByRatio(Vector2.one * 0.4f, 0.85f).Sin(Vector2.one * 0.5f, 0.5f
 ```
 
 ![floating_scaling](https://cloud.githubusercontent.com/assets/1482297/13767235/d3f350f6-eaab-11e5-9045-ba38b9d74370.gif)
+
+### Aiming + Ciruclular move
+
+```C#
+var vel = default(IEnumerator<Vector2>);
+var m = g.MotionP();
+m.AimSpringAt(p, 0.1f, 0.45f).Capture(out vel);
+m.Circular(vel.Magnitude().Amplify(2f), 2f);
+```
+
+![aim circular](https://cloud.githubusercontent.com/assets/1482297/13769818/e2d947c8-eac5-11e5-851f-095265aeb32b.gif)
+
+### Scaling by velocity
+
+```C#
+var vel = default(IEnumerator<Vector2>);
+g.MotionP().AimExpoAt(p, 0.15f).Capture(out vel);
+g.MotionS().AimSpringAt(vel.Magnitude().Amplify(0.075f).Offset(1f).ToVector2(), 0.12f, 0.7f);
+```
+
+![scaling_by_velocity](https://cloud.githubusercontent.com/assets/1482297/13769616/5fab509a-eac4-11e5-9b41-5c83567f1e97.gif)
 
 ## License
 
