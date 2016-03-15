@@ -59,6 +59,14 @@ g.MotionX().Velocity(-6f).Accel(0.3f);
 
 ![accel_with_init_2](https://cloud.githubusercontent.com/assets/1482297/13764927/0e84f5d0-ea98-11e5-9206-9fef6dcb1c24.gif)
 
+### Accel by ratio
+
+```C#
+g.MotionX().AccelByRatio(10f, 0.9f);
+```
+
+![accel_by_ratio](https://cloud.githubusercontent.com/assets/1482297/13765144/babeb15a-ea99-11e5-9eb0-7dd14b8e1482.gif)
+
 ## Complex motion examples
 
 ### Parabola
