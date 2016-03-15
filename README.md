@@ -261,6 +261,24 @@ g.MotionS().AimSpringAt(vel.Magnitude().Amplify(0.075f).Offset(1f).ToVector2(), 
 
 ![scaling_by_velocity](https://cloud.githubusercontent.com/assets/1482297/13769616/5fab509a-eac4-11e5-9b41-5c83567f1e97.gif)
 
+### Follow move
+
+```C#
+Func<Vector2> p = () => GetMousePosition();
+g.MotionP().AimCriticalDampingAt(p, 0.8f);
+```
+
+![follow](https://cloud.githubusercontent.com/assets/1482297/13770186/ae3889d6-eac8-11e5-93df-98c5a1d0082e.gif)
+
+### Follow + Circular move
+
+```C#
+Func<Vector2> p = () => GetMousePosition();
+g.MotionP().AimCriticalDampingAt(p, 0.8f).Circular(83f, 1.5f);
+```
+
+![follow circular](https://cloud.githubusercontent.com/assets/1482297/13771198/90db5484-eacf-11e5-932e-798d9905147e.gif)
+
 ## License
 
 Copyright 2016 Oink Games, Inc. and other contributors.
