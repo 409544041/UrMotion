@@ -67,6 +67,48 @@ g.MotionX().AccelByRatio(10f, 0.9f);
 
 ![accel_by_ratio](https://cloud.githubusercontent.com/assets/1482297/13765144/babeb15a-ea99-11e5-9eb0-7dd14b8e1482.gif)
 
+### Sin move
+
+```C#
+g.MotionX().Sin(83f, 0.5f);
+```
+
+![sin](https://cloud.githubusercontent.com/assets/1482297/13766403/e5b9d0dc-eaa4-11e5-8e6d-8b7810213f53.gif)
+
+### Circular move
+
+```C#
+g.MotionP().Circular(83f, 0.5f);
+```
+
+![circular](https://cloud.githubusercontent.com/assets/1482297/13766625/ef8fea72-eaa6-11e5-9d8b-3b39b9733590.gif)
+
+### Lissajous move
+
+```C#
+g.MotionP().Lissajous(83f, 51f, 0.6f, 1.2f, 0f);
+```
+
+![lissajous](https://cloud.githubusercontent.com/assets/1482297/13766843/d274a156-eaa8-11e5-887e-fbf4a3f502b3.gif)
+
+### Timed parameter
+
+Change velocity by time with sin curve.
+
+```C#
+g.MotionX().Velocity(Source.Float.Sin(2f, 1f).Offset(2f));
+```
+
+![velocity_sin](https://cloud.githubusercontent.com/assets/1482297/13766518/c7b454da-eaa5-11e5-903f-9e602c03078d.gif)
+
+Change radius by time with sin curve.
+
+```C#
+g.MotionX().Sin(Source.Float.Sin(51f, 0.5f).Offset(51f), 1f);
+```
+
+![radius_sin](https://cloud.githubusercontent.com/assets/1482297/13766584/76bee0ee-eaa6-11e5-9926-cff56378bf4b.gif)
+
 ### Lifetime control
 
 Finish velocity effect after 15fr.
@@ -104,6 +146,40 @@ g.MotionY().Velocity(18f).Accel(-0.98f);
 ```
 
 ![parabola](https://cloud.githubusercontent.com/assets/1482297/13764902/c2e1ba50-ea97-11e5-91ad-581e37cce268.gif)
+
+### Spiral
+
+```C#
+g.MotionP().Circular(Source.Float.Sin(51f, 0.5f).Offset(51f), 2f);
+```
+
+![spiral](https://cloud.githubusercontent.com/assets/1482297/13766722/d051baea-eaa7-11e5-90c2-e82e12a6051e.gif)
+
+### Lissajous + Lissajous
+
+```C#
+g.MotionP().Lissajous(83f, 51f, 0.6f, 1.2f, 0f).Lissajous(24f, 32f, 2.4f, 0.8f, 0f);
+```
+
+![lissajous lissajous](https://cloud.githubusercontent.com/assets/1482297/13766920/576e4542-eaa9-11e5-8497-71bda0f558ed.gif)
+
+### Lissajous with directon
+
+```C#
+var vel = default(IEnumerator<Vector2>);
+g.MotionP().Lissajous(83f, 51f, 0.6f, 1.2f, 0f).Capture(out vel);
+g.MotionR().AimRatioAt(vel.ToAngle().Offset(-90f), 1f);
+```
+
+![lissajous direction](https://cloud.githubusercontent.com/assets/1482297/13767022/36d96914-eaaa-11e5-9bde-2d2ecb559a7c.gif)
+
+### Floating scaling
+
+```C#
+g.MotionS().AccelByRatio(Vector2.one * 0.4f, 0.85f).Sin(Vector2.one * 0.5f, 0.5f);
+```
+
+![floating_scaling](https://cloud.githubusercontent.com/assets/1482297/13767235/d3f350f6-eaab-11e5-9045-ba38b9d74370.gif)
 
 ## License
 
