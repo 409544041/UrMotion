@@ -104,6 +104,34 @@ namespace UrMotion
 			}
 		}
 
+		public static IEnumerator<float> AmplifyComponents(IEnumerator<float> source, IEnumerator<float> value)
+		{
+			while (source.MoveNext() && value.MoveNext()) {
+				yield return source.Current * value.Current;
+			}
+		}
+
+		public static IEnumerator<Vector2> AmplifyComponents(IEnumerator<Vector2> source, IEnumerator<Vector2> value)
+		{
+			while (source.MoveNext() && value.MoveNext()) {
+				yield return Vector2.Scale(source.Current, value.Current);
+			}
+		}
+
+		public static IEnumerator<Vector3> AmplifyComponents(IEnumerator<Vector3> source, IEnumerator<Vector3> value)
+		{
+			while (source.MoveNext() && value.MoveNext()) {
+				yield return Vector3.Scale(source.Current, value.Current);
+			}
+		}
+
+		public static IEnumerator<Vector4> AmplifyComponents(IEnumerator<Vector4> source, IEnumerator<Vector4> value)
+		{
+			while (source.MoveNext() && value.MoveNext()) {
+				yield return Vector4.Scale(source.Current, value.Current);
+			}
+		}
+
 		public static IEnumerator<V> Discrete<V>(IEnumerator<V> source, IEnumerator<float> interval)
 		{
 			while (source.MoveNext()) {
