@@ -109,6 +109,23 @@ g.MotionX().Sin(Source.Float.Sin(51f, 0.5f).Offset(51f), 1f);
 
 ![radius_sin](https://cloud.githubusercontent.com/assets/1482297/13766584/76bee0ee-eaa6-11e5-9926-cff56378bf4b.gif)
 
+### Custom parameter
+
+You can use any of the following types as a motion parameter.
+
+ * `V`
+ * `IEnumerator<V>`
+ * `IEnumerable<V>`
+ * `Func<V>`
+
+`V` is: `float`, `Vector2`, `Vector3` or `Vector4`
+
+```C#
+g.MotionX().Velocity(() => Random.Range(-10f, 10f));
+```
+
+![own_function](https://cloud.githubusercontent.com/assets/1482297/13768846/981ffe28-eabd-11e5-84dd-49778119e2ac.gif)
+
 ### Lifetime control
 
 Finish velocity effect after 15fr.
