@@ -133,6 +133,22 @@ g.MotionP().AimCriticalDampingAt(p, 0.15f);
 
 ![aim_critical](https://cloud.githubusercontent.com/assets/1482297/13769357/4aac3f44-eac2-11e5-914d-5cba808441b1.gif)
 
+### Perlin noise
+
+```C#
+g.MotionP().Perlin(new Vector2(0.4f, 0.8f));
+```
+
+![perlin](https://cloud.githubusercontent.com/assets/1482297/13772583/4a0903e0-ead8-11e5-82a5-e15678af3283.gif)
+
+### Fractional brownian motion
+
+```C#
+g.MotionP().Fbm(new Vector2(0.4f, 0.8f), 3).AmplifyComponents(new Vector2(3f, 2f));
+```
+
+![fbm](https://cloud.githubusercontent.com/assets/1482297/13772542/162a7c70-ead8-11e5-9584-e2a386352ce8.gif)
+
 ### Timed parameter
 
 Change velocity by time with sin curve.
@@ -261,6 +277,14 @@ g.MotionS().AimSpringAt(vel.Magnitude().Amplify(0.075f).Offset(1f).ToVector2(), 
 
 ![scaling_by_velocity](https://cloud.githubusercontent.com/assets/1482297/13769616/5fab509a-eac4-11e5-9b41-5c83567f1e97.gif)
 
+### Circular + Noise
+
+```C#
+g.MotionP().Circular(83f, 0.25f).Fbm(new Vector2(2f, 3f), 3).Amplify(6f);
+```
+
+![circular noise](https://cloud.githubusercontent.com/assets/1482297/13773205/75218414-eadb-11e5-9da0-583d0deea74c.gif)
+
 ### Follow move
 
 ```C#
@@ -278,6 +302,28 @@ g.MotionP().AimCriticalDampingAt(p, 0.8f).Circular(83f, 1.5f);
 ```
 
 ![follow circular](https://cloud.githubusercontent.com/assets/1482297/13771198/90db5484-eacf-11e5-932e-798d9905147e.gif)
+
+### Follow + Follow + Follow
+
+```C#
+System.Func<Vector2> gp = () => new Vector2(g.transform.localPosition.x, g.transform.localPosition.y);
+g.MotionP().AimCriticalDampingAt(p, 0.8f);
+f1.MotionP().AimCriticalDampingAt(gp, 0.3f).Delay(6f).AccelByRatio(new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f)) * 20f, 0.9f);
+f2.MotionP().AimCriticalDampingAt(gp, 0.2f).Delay(9f).AccelByRatio(new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f)) * 15f, 0.9f);
+```
+
+![follow follow](https://cloud.githubusercontent.com/assets/1482297/13773012/7e0ec5d8-eada-11e5-8d72-6a59e3084cc0.gif)
+
+### Aiming + Noise
+
+```C#
+var vel = default(IEnumerator<Vector2>);
+var m = g.MotionP();
+m.AimSpringAt(p, 0.1f, 0.45f).Capture(out vel);
+m.Perlin(new Vector2(7f, 11f)).Amplify(vel.Magnitude().Amplify(1.2f));
+```
+
+![aim noise](https://cloud.githubusercontent.com/assets/1482297/13773530/fced7438-eadc-11e5-81f9-e390d8e7fab9.gif)
 
 ## License
 
