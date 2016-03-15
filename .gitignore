@@ -28,3 +28,7 @@ tmp/
 .DS_Store
 *.swp
 *.swo
+
+anim
+anim.gif
+Capture/
