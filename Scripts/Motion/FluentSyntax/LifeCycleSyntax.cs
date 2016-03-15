@@ -1,4 +1,6 @@
-﻿using System;
+﻿using UnityEngine;
+using System;
+using System.Collections.Generic;
 
 namespace UrMotion
 {
@@ -28,13 +30,46 @@ namespace UrMotion
 			return self;
 		}
 
-		public static MotionBehaviour<V> Threshold<V, T>(this MotionBehaviour<V> self, T threshold)
+		public static MotionBehaviour<V> LiveThreshold<V, T>(this MotionBehaviour<V> self, T threshold)
 		{
 			Syntax.Resolve<V>(self,
-				(e) => e.Wrap((v) => LifeCycle.Threshold(v, Syntax.AsEnumerator<float, T>(threshold))),
-				(e) => e.Wrap((v) => LifeCycle.Threshold(v, Syntax.AsEnumerator<float, T>(threshold))),
-				(e) => e.Wrap((v) => LifeCycle.Threshold(v, Syntax.AsEnumerator<float, T>(threshold))),
-				(e) => e.Wrap((v) => LifeCycle.Threshold(v, Syntax.AsEnumerator<float, T>(threshold)))
+				(e) => e.Wrap((v) => LifeCycle.LiveThreshold(v, Syntax.AsEnumerator<float, T>(threshold))),
+				(e) => e.Wrap((v) => LifeCycle.LiveThreshold(v, Syntax.AsEnumerator<float, T>(threshold))),
+				(e) => e.Wrap((v) => LifeCycle.LiveThreshold(v, Syntax.AsEnumerator<float, T>(threshold))),
+				(e) => e.Wrap((v) => LifeCycle.LiveThreshold(v, Syntax.AsEnumerator<float, T>(threshold)))
+			);
+			return self;
+		}
+
+		public static MotionBehaviour<V> LiveThreshold<V, T>(this MotionBehaviour<V> self, T threshold, Func<float, float, bool> comparator)
+		{
+			Syntax.Resolve<V>(self,
+				(e) => e.Wrap((v) => LifeCycle.LiveThreshold(v, Syntax.AsEnumerator<float, T>(threshold), comparator)),
+				(e) => e.Wrap((v) => LifeCycle.LiveThreshold(v, Syntax.AsEnumerator<float, T>(threshold), comparator)),
+				(e) => e.Wrap((v) => LifeCycle.LiveThreshold(v, Syntax.AsEnumerator<float, T>(threshold), comparator)),
+				(e) => e.Wrap((v) => LifeCycle.LiveThreshold(v, Syntax.AsEnumerator<float, T>(threshold), comparator))
+			);
+			return self;
+		}
+
+		public static MotionBehaviour<V> LiveUntil<V>(this MotionBehaviour<V> self, Func<V, bool> condition)
+		{
+			Syntax.Resolve<V>(self,
+				(e) => e.Wrap((v) => LifeCycle.LiveUntil(v as IEnumerator<float  >, condition as Func<float,   bool>)),
+				(e) => e.Wrap((v) => LifeCycle.LiveUntil(v as IEnumerator<Vector2>, condition as Func<Vector2, bool>)),
+				(e) => e.Wrap((v) => LifeCycle.LiveUntil(v as IEnumerator<Vector3>, condition as Func<Vector3, bool>)),
+				(e) => e.Wrap((v) => LifeCycle.LiveUntil(v as IEnumerator<Vector4>, condition as Func<Vector4, bool>))
+			);
+			return self;
+		}
+
+		public static MotionBehaviour<V> LiveWhile<V>(this MotionBehaviour<V> self, Func<V, bool> condition)
+		{
+			Syntax.Resolve<V>(self,
+				(e) => e.Wrap((v) => LifeCycle.LiveWhile(v as IEnumerator<float  >, condition as Func<float,   bool>)),
+				(e) => e.Wrap((v) => LifeCycle.LiveWhile(v as IEnumerator<Vector2>, condition as Func<Vector2, bool>)),
+				(e) => e.Wrap((v) => LifeCycle.LiveWhile(v as IEnumerator<Vector3>, condition as Func<Vector3, bool>)),
+				(e) => e.Wrap((v) => LifeCycle.LiveWhile(v as IEnumerator<Vector4>, condition as Func<Vector4, bool>))
 			);
 			return self;
 		}
@@ -49,14 +84,19 @@ namespace UrMotion
 			return Delay<V, Func<float>>(self, delay);
 		}
 
-		public static MotionBehaviour<V> Threshold<V>(this MotionBehaviour<V> self)
+		public static MotionBehaviour<V> LiveThreshold<V>(this MotionBehaviour<V> self)
 		{
-			return Threshold<V, float>(self, 0.01f);
+			return LiveThreshold<V, float>(self, 0.01f);
 		}
 
-		public static MotionBehaviour<V> Threshold<V>(this MotionBehaviour<V> self, Func<V> threshold)
+		public static MotionBehaviour<V> LiveThreshold<V>(this MotionBehaviour<V> self, Func<V> threshold)
 		{
-			return Threshold<V, Func<V>>(self, threshold);
+			return LiveThreshold<V, Func<V>>(self, threshold);
+		}
+
+		public static MotionBehaviour<V> LiveThreshold<V>(this MotionBehaviour<V> self, Func<V> threshold, Func<float, float, bool> comparator)
+		{
+			return LiveThreshold<V, Func<V>>(self, threshold, comparator);
 		}
 	}
 }
