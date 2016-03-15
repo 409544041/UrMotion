@@ -67,7 +67,23 @@ g.MotionX().AccelByRatio(10f, 0.9f);
 
 ![accel_by_ratio](https://cloud.githubusercontent.com/assets/1482297/13765144/babeb15a-ea99-11e5-9eb0-7dd14b8e1482.gif)
 
-### Finish velocity effect
+### Lifetime control
+
+Finish velocity effect after 15fr.
+
+```C#
+g.MotionX().Accel(0.3f).Lifetime(15f);
+```
+
+![lifetime](https://cloud.githubusercontent.com/assets/1482297/13766138/a8bc5fc6-eaa2-11e5-860d-2dc673629edd.gif)
+
+Start velocity effect after 15fr.
+
+```C#
+g.MotionX().Accel(0.3f).Delay(15f);
+```
+
+![delay](https://cloud.githubusercontent.com/assets/1482297/13766176/ffdc7ade-eaa2-11e5-92cf-407e565884b0.gif)
 
 Finish velocity effect if it magnitude is less than 0.01f.
 Then, destroy a GameObject.
