@@ -57,13 +57,18 @@ g.MotionX().Velocity(1f).Accel(0.3f);
 g.MotionX().Velocity(-6f).Accel(0.3f);
 ```
 
-![accel_with_init_2](https://cloud.githubusercontent.com/assets/1482297/13746251/ddbf4aac-ea35-11e5-9bf4-b7b45b8d2106.gif)
+![accel_with_init_2](https://cloud.githubusercontent.com/assets/1482297/13764927/0e84f5d0-ea98-11e5-9206-9fef6dcb1c24.gif)
+
+## Complex motion examples
+
+### Parabola
 
 ```C#
-g.MotionP().Velocity(new Vector2(6f, 18f)).Accel(new Vector2(0f, -0.98f));
+g.MotionX().Velocity(6f);
+g.MotionY().Velocity(18f).Accel(-0.98f);
 ```
 
-![accel_with_init_3](https://cloud.githubusercontent.com/assets/1482297/13746448/dd96ab46-ea36-11e5-8674-29d1d159c0b9.gif)
+![parabola](https://cloud.githubusercontent.com/assets/1482297/13764902/c2e1ba50-ea97-11e5-91ad-581e37cce268.gif)
 
 ## License
 
