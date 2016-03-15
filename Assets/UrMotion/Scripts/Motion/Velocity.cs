@@ -47,6 +47,42 @@ namespace UrMotion
 			}
 		}
 
+		public static IEnumerator<float> AccelByRatio(float iv, IEnumerator<float> a)
+		{
+			var v = iv;
+			while (a.MoveNext()) {
+				v *= a.Current;
+				yield return v;
+			}
+		}
+
+		public static IEnumerator<Vector2> AccelByRatio(Vector2 iv, IEnumerator<float> a)
+		{
+			var v = iv;
+			while (a.MoveNext()) {
+				v *= a.Current;
+				yield return v;
+			}
+		}
+
+		public static IEnumerator<Vector3> AccelByRatio(Vector3 iv, IEnumerator<float> a)
+		{
+			var v = iv;
+			while (a.MoveNext()) {
+				v *= a.Current;
+				yield return v;
+			}
+		}
+
+		public static IEnumerator<Vector4> AccelByRatio(Vector4 iv, IEnumerator<float> a)
+		{
+			var v = iv;
+			while (a.MoveNext()) {
+				v *= a.Current;
+				yield return v;
+			}
+		}
+
 		public static IEnumerator<Vector2> Angle(IEnumerator<Vector2> source, IEnumerator<float> angle)
 		{
 			while (source.MoveNext() && angle.MoveNext()) {

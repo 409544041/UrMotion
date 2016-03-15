@@ -25,6 +25,17 @@ namespace UrMotion
 			return self;
 		}
 
+		public static MotionBehaviour<V> AccelByRatio<V, T>(this MotionBehaviour<V> self, V iv, T accel)
+		{
+			Syntax.Resolve<V>(self,
+				(e) => e.Add(Vel.AccelByRatio((float  )(object)iv, Syntax.AsEnumerator<float, T>(accel))),
+				(e) => e.Add(Vel.AccelByRatio((Vector2)(object)iv, Syntax.AsEnumerator<float, T>(accel))),
+				(e) => e.Add(Vel.AccelByRatio((Vector3)(object)iv, Syntax.AsEnumerator<float, T>(accel))),
+				(e) => e.Add(Vel.AccelByRatio((Vector4)(object)iv, Syntax.AsEnumerator<float, T>(accel)))
+			);
+			return self;
+		}
+
 		public static MotionBehaviour<Vector2> Angle<T>(this MotionBehaviour<Vector2> self, T angle)
 		{
 			self.Wrap((v) => Vel.Angle(v, Syntax.AsEnumerator<float, T>(angle)));
@@ -45,6 +56,11 @@ namespace UrMotion
 		public static MotionBehaviour<V> Accel<V>(this MotionBehaviour<V> self, Func<V> accel)
 		{
 			return Accel<V, Func<V>>(self, accel);
+		}
+
+		public static MotionBehaviour<V> AccelByRatio<V>(this MotionBehaviour<V> self, V iv, Func<V> accel)
+		{
+			return AccelByRatio<V, Func<V>>(self, iv, accel);
 		}
 
 		public static MotionBehaviour<Vector2> Angle(this MotionBehaviour<Vector2> self, Func<float> angle)
