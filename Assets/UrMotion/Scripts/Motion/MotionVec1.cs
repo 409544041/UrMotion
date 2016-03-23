@@ -105,7 +105,7 @@ namespace UrMotion
 				return GetGraphic().color;
 			}
 			set {
-				GetGraphic().color = col;
+				GetGraphic().color = value;
 			}
 		}
 	}
@@ -136,7 +136,9 @@ namespace UrMotion
 				return mat.color;
 			}
 			set {
-				mat.color = col;
+				var m = mat;
+				m.color = value;
+				mat = m;
 			}
 		}
 	}
