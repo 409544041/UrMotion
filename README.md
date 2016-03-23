@@ -197,7 +197,7 @@ g.MotionX().Accel(0.3f).Lifetime(15f);
 Start velocity effect after 15fr.
 
 ```C#
-g.MotionX().Accel(0.3f).Delay(15f);
+g.MotionX().Accel(0.3f).StartDelay(15f);
 ```
 
 ![delay](https://cloud.githubusercontent.com/assets/1482297/13766176/ffdc7ade-eaa2-11e5-92cf-407e565884b0.gif)
@@ -206,7 +206,7 @@ Finish velocity effect if it magnitude is less than 0.01f.
 Then, destroy a GameObject.
 
 ```C#
-g.MotionX().AccelByRatio(10f, 0.9f).LiveThreshold(0.01f).Then(() => Destroy(g));
+g.MotionX().AccelByRatio(10f, 0.9f).LiveThreshold(0.01f).Next(() => Destroy(g));
 ```
 
 ![complete_velocity](https://cloud.githubusercontent.com/assets/1482297/13765840/5bfe617c-eaa0-11e5-87ac-8572d7a771c4.gif)
@@ -308,8 +308,8 @@ g.MotionP().AimCriticalDampingAt(p, 0.8f).Circular(83f, 1.5f);
 ```C#
 System.Func<Vector2> gp = () => new Vector2(g.transform.localPosition.x, g.transform.localPosition.y);
 g.MotionP().AimCriticalDampingAt(p, 0.8f);
-f1.MotionP().AimCriticalDampingAt(gp, 0.3f).Delay(6f).AccelByRatio(new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f)) * 20f, 0.9f);
-f2.MotionP().AimCriticalDampingAt(gp, 0.2f).Delay(9f).AccelByRatio(new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f)) * 15f, 0.9f);
+f1.MotionP().AimCriticalDampingAt(gp, 0.3f).StartDelay(6f).AccelByRatio(new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f)) * 20f, 0.9f);
+f2.MotionP().AimCriticalDampingAt(gp, 0.2f).StartDelay(9f).AccelByRatio(new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f)) * 15f, 0.9f);
 ```
 
 ![follow follow](https://cloud.githubusercontent.com/assets/1482297/13773012/7e0ec5d8-eada-11e5-8d72-6a59e3084cc0.gif)
