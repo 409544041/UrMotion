@@ -136,7 +136,9 @@ namespace UrMotion
 				return mat.color;
 			}
 			set {
-				mat.color = value;
+				var m = mat;
+				m.color = value;
+				mat = m;
 			}
 		}
 	}
