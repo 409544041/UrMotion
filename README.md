@@ -325,6 +325,24 @@ m.Perlin(new Vector2(7f, 11f)).Amplify(vel.Magnitude().Amplify(1.2f));
 
 ![aim noise](https://cloud.githubusercontent.com/assets/1482297/13773530/fced7438-eadc-11e5-81f9-e390d8e7fab9.gif)
 
+### Spiral #2
+
+```C#
+for (var i = 0; i < 12; ++i) {
+	g = GameObject.Instantiate(prefab);
+	g.transform.SetParent(prefab.transform.parent);
+	g.transform.localPosition = Vector3.zero;
+	g.transform.localScale = Vector3.one;
+
+	var angle = 30f * i;
+	var radius = Velocity.AccelByRatio(218f, Source.Constant(0.92f)).Offset(83f);
+	var speed = Velocity.AccelByRatio(0.75f, Source.Constant(0.94f)).Offset(0.01f);
+	g.MotionP().Circular(radius, speed).Angle(angle).Fbm(new Vector2(0f, 1f), 3).AmplifyComponents(new Vector2(0f, 0.3f));
+}
+```
+
+![spiral_2](https://cloud.githubusercontent.com/assets/1482297/13800153/b9fa493e-eb69-11e5-97ec-3069291197b3.gif)
+
 ## License
 
 Copyright 2016 Oink Games, Inc. and other contributors.
