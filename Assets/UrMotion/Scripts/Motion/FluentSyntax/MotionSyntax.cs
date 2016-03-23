@@ -10,7 +10,7 @@ namespace UrMotion
 			return self;
 		}
 
-		public static T Then<T>(this T self, Callback callback) where T : MotionBehaviourBase
+		public static T Next<T>(this T self, Callback callback) where T : MotionBehaviourBase
 		{
 			if (self.enabled || !self.IsComplete) {
 				self.OnComplete += callback;
