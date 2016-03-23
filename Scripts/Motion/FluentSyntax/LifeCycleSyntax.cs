@@ -19,7 +19,7 @@ namespace UrMotion
 			return self;
 		}
 
-		public static MotionBehaviour<V> Delay<V, T>(this MotionBehaviour<V> self, T delay)
+		public static MotionBehaviour<V> StartDelay<V, T>(this MotionBehaviour<V> self, T delay)
 		{
 			Syntax.Resolve<V>(self,
 				(e) => e.Wrap((v) => LifeCycle.Delay(v, Syntax.AsEnumerator<float, T>(delay))),
@@ -79,9 +79,9 @@ namespace UrMotion
 			return Lifetime<V, Func<float>>(self, period);
 		}
 
-		public static MotionBehaviour<V> Delay<V>(this MotionBehaviour<V> self, Func<float> delay)
+		public static MotionBehaviour<V> StartDelay<V>(this MotionBehaviour<V> self, Func<float> delay)
 		{
-			return Delay<V, Func<float>>(self, delay);
+			return StartDelay<V, Func<float>>(self, delay);
 		}
 
 		public static MotionBehaviour<V> LiveThreshold<V>(this MotionBehaviour<V> self)
