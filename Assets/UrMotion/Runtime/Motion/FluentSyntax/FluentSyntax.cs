@@ -1,6 +1,6 @@
-﻿using UnityEngine;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using UnityEngine;
 
 namespace UrMotion
 {
@@ -20,7 +20,7 @@ namespace UrMotion
 			if (typeof(T) == typeof(Func<V>)) {
 				return Source.Function((Func<V>)(object)source);
 			}
-			throw new ArgumentException(string.Format("Expected {0} but was: {1}", typeof(V).FullName, typeof(T).FullName));
+			throw new ArgumentException($"Expected {typeof(V).FullName} but was: {typeof(T).FullName}");
 		}
 
 		public static void Resolve<V>(MotionBehaviour<V> self, Action<MotionBehaviour<float>> vec1, Action<MotionBehaviour<Vector2>> vec2, Action<MotionBehaviour<Vector3>> vec3, Action<MotionBehaviour<Vector4>> vec4)
@@ -51,7 +51,7 @@ namespace UrMotion
 				vec4();
 				return;
 			}
-			throw new ArgumentException(string.Format("{0} is not valid.", typeof(V).FullName));
+			throw new ArgumentException($"{typeof(V).FullName} is not valid.");
 		}
 	}
 }

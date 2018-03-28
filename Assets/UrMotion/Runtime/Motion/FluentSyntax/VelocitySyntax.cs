@@ -1,10 +1,10 @@
-﻿using UnityEngine;
-using System;
+﻿using System;
+using UnityEngine;
 
 namespace UrMotion
 {
-	using Vel = UrMotion.Velocity;
-	using Syntax = UrMotion.FluentSyntax;
+	using Vel = Velocity;
+	using Syntax = FluentSyntax;
 
 	public static class VelocitySyntax
 	{

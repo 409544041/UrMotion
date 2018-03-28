@@ -4,12 +4,12 @@ namespace UrMotion
 {
 	public class MotionRX : MotionVec1R<MotionRX>
 	{
-		override protected float value {
+		protected override float value {
 			get {
 				return vector.x;
 			}
 			set {
-				Vector3 v = vector;
+				var v = vector;
 				v.x = value;
 				vector = v;
 			}
@@ -18,12 +18,12 @@ namespace UrMotion
 
 	public class MotionRY : MotionVec1R<MotionRY>
 	{
-		override protected float value {
+		protected override float value {
 			get {
 				return vector.y;
 			}
 			set {
-				Vector3 v = vector;
+				var v = vector;
 				v.y = value;
 				vector = v;
 			}
@@ -32,12 +32,12 @@ namespace UrMotion
 
 	public class MotionRZ : MotionVec1R<MotionRZ>
 	{
-		override protected float value {
+		protected override float value {
 			get {
 				return vector.z;
 			}
 			set {
-				Vector3 v = vector;
+				var v = vector;
 				v.z = value;
 				vector = v;
 			}
@@ -46,12 +46,12 @@ namespace UrMotion
 
 	public class MotionRXY : MotionVec2R<MotionRXY>
 	{
-		override protected Vector2 value {
+		protected override Vector2 value {
 			get {
 				return new Vector2(vector.x, vector.y);
 			}
 			set {
-				Vector3 v = vector;
+				var v = vector;
 				v.x = value.x;
 				v.y = value.y;
 				vector = v;
@@ -61,12 +61,12 @@ namespace UrMotion
 
 	public class MotionRXZ : MotionVec2R<MotionRXZ>
 	{
-		override protected Vector2 value {
+		protected override Vector2 value {
 			get {
 				return new Vector2(vector.x, vector.z);
 			}
 			set {
-				Vector3 v = vector;
+				var v = vector;
 				v.x = value.x;
 				v.z = value.y;
 				vector = v;
@@ -76,12 +76,12 @@ namespace UrMotion
 
 	public class MotionRYZ : MotionVec2R<MotionRYZ>
 	{
-		override protected Vector2 value {
+		protected override Vector2 value {
 			get {
 				return new Vector2(vector.y, vector.z);
 			}
 			set {
-				Vector3 v = vector;
+				var v = vector;
 				v.y = value.x;
 				v.z = value.y;
 				vector = v;
@@ -91,7 +91,7 @@ namespace UrMotion
 
 	public class MotionRXYZ : MotionVec3R<MotionRXYZ>
 	{
-		override protected Vector3 value {
+		protected override Vector3 value {
 			get {
 				return vector;
 			}
@@ -103,12 +103,12 @@ namespace UrMotion
 
 	public class MotionWRX : MotionVec1WR<MotionWRX>
 	{
-		override protected float value {
+		protected override float value {
 			get {
 				return vector.x;
 			}
 			set {
-				Vector3 v = vector;
+				var v = vector;
 				v.x = value;
 				vector = v;
 			}
@@ -117,12 +117,12 @@ namespace UrMotion
 
 	public class MotionWRY : MotionVec1WR<MotionWRY>
 	{
-		override protected float value {
+		protected override float value {
 			get {
 				return vector.y;
 			}
 			set {
-				Vector3 v = vector;
+				var v = vector;
 				v.y = value;
 				vector = v;
 			}
@@ -131,12 +131,12 @@ namespace UrMotion
 
 	public class MotionWRZ : MotionVec1WR<MotionWRZ>
 	{
-		override protected float value {
+		protected override float value {
 			get {
 				return vector.z;
 			}
 			set {
-				Vector3 v = vector;
+				var v = vector;
 				v.z = value;
 				vector = v;
 			}
@@ -145,12 +145,12 @@ namespace UrMotion
 
 	public class MotionWRXY : MotionVec2WR<MotionWRXY>
 	{
-		override protected Vector2 value {
+		protected override Vector2 value {
 			get {
 				return new Vector2(vector.x, vector.y);
 			}
 			set {
-				Vector3 v = vector;
+				var v = vector;
 				v.x = value.x;
 				v.y = value.y;
 				vector = v;
@@ -160,12 +160,12 @@ namespace UrMotion
 
 	public class MotionWRXZ : MotionVec2WR<MotionWRXZ>
 	{
-		override protected Vector2 value {
+		protected override Vector2 value {
 			get {
 				return new Vector2(vector.x, vector.z);
 			}
 			set {
-				Vector3 v = vector;
+				var v = vector;
 				v.x = value.x;
 				v.z = value.y;
 				vector = v;
@@ -175,12 +175,12 @@ namespace UrMotion
 
 	public class MotionWRYZ : MotionVec2WR<MotionWRYZ>
 	{
-		override protected Vector2 value {
+		protected override Vector2 value {
 			get {
 				return new Vector2(vector.y, vector.z);
 			}
 			set {
-				Vector3 v = vector;
+				var v = vector;
 				v.y = value.x;
 				v.z = value.y;
 				vector = v;
@@ -190,7 +190,7 @@ namespace UrMotion
 
 	public class MotionWRXYZ : MotionVec3WR<MotionWRXYZ>
 	{
-		override protected Vector3 value {
+		protected override Vector3 value {
 			get {
 				return vector;
 			}

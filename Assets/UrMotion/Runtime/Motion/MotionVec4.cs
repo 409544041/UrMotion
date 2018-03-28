@@ -10,7 +10,7 @@ namespace UrMotion
 			return Get<T>(g);
 		}
 
-		override protected Vector4 Add(Vector4 a, Vector4 b)
+		protected override Vector4 Add(Vector4 a, Vector4 b)
 		{
 			return a + b;
 		}

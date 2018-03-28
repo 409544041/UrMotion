@@ -1,8 +1,6 @@
-﻿using UnityEngine;
-using System;
-using System.Collections;
+﻿using System;
 using System.Collections.Generic;
-using System.Linq.Expressions;
+using UnityEngine;
 
 namespace UrMotion
 {
@@ -47,28 +45,14 @@ namespace UrMotion
 			set;
 		}
 
-		public float ElapsedTime {
-			get {
-				return elapsedTime;
-			}
-		}
-
-		public IEnumerator<V> ValueEnumerator {
-			get {
-				return valueEnumerator ?? (valueEnumerator = GetValueEnumerator());
-			}
-		}
-
-		override public float FrameRate {
+		public override float FrameRate {
 			get;
 			set;
 		}
 
-		override public bool IsComplete {
-			get {
-				return velocities.First == null;
-			}
-		}
+		public float ElapsedTime => elapsedTime;
+		public IEnumerator<V> ValueEnumerator => valueEnumerator ?? (valueEnumerator = GetValueEnumerator());
+		public override bool IsComplete => velocities.First == null;
 
 		public MotionBehaviour()
 		{
@@ -92,12 +76,10 @@ namespace UrMotion
 		public void Compose(Func<IEnumerator<V>, IEnumerator<V>, IEnumerator<V>> f)
 		{
 			var last1 = velocities.Last;
-			if (last1 != null) {
-				var last2 = last1.Previous;
-				if (last2 != null) {
-					last2.Value = f(last2.Value, last1.Value);
-					velocities.RemoveLast();
-				}
+			var last2 = last1?.Previous;
+			if (last2 != null) {
+				last2.Value = f(last2.Value, last1.Value);
+				velocities.RemoveLast();
 			}
 		}
 
@@ -108,7 +90,7 @@ namespace UrMotion
 			}
 		}
 
-		override protected void Reset()
+		protected override void Reset()
 		{
 			base.Reset();
 			elapsedTime = 0f;

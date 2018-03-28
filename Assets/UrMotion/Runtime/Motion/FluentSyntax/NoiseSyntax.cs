@@ -1,10 +1,8 @@
 ﻿using UnityEngine;
-using System;
-using System.Collections.Generic;
 
 namespace UrMotion
 {
-	using Syntax = UrMotion.FluentSyntax;
+	using Syntax = FluentSyntax;
 
 	public static class NoiseSyntax
 	{

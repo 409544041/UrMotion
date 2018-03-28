@@ -1,11 +1,10 @@
-﻿using UnityEngine;
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 namespace UrMotion
 {
-	using Syntax = UrMotion.FluentSyntax;
-	using Cap = UrMotion.Capture;
+	using Syntax = FluentSyntax;
+	using Cap = Capture;
 
 	public static class CaptureSyntax
 	{
