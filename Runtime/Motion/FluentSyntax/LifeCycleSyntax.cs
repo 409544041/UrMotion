@@ -1,10 +1,10 @@
-﻿using UnityEngine;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using UnityEngine;
 
 namespace UrMotion
 {
-	using Syntax = UrMotion.FluentSyntax;
+	using Syntax = FluentSyntax;
 
 	public static class LifeCycleSyntax
 	{

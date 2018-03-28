@@ -27,7 +27,7 @@ namespace UrMotion
 
 		public static void PauseMotions<T>(this GameObject g) where T : MotionBehaviourBase
 		{
-			foreach (T m in g.GetComponents<T>()) {
+			foreach (var m in g.GetComponents<T>()) {
 				if (!m.IsComplete) {
 					m.enabled = false;
 				}
@@ -41,7 +41,7 @@ namespace UrMotion
 
 		public static void ResumeMotions<T>(this GameObject g) where T : MotionBehaviourBase
 		{
-			foreach (T m in g.GetComponents<T>()) {
+			foreach (var m in g.GetComponents<T>()) {
 				if (!m.IsComplete) {
 					m.enabled = true;
 				}

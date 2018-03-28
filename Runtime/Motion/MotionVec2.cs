@@ -9,7 +9,7 @@ namespace UrMotion
 			return Get<T>(g);
 		}
 
-		override protected Vector2 Add(Vector2 a, Vector2 b)
+		protected override Vector2 Add(Vector2 a, Vector2 b)
 		{
 			return a + b;
 		}
@@ -29,7 +29,7 @@ namespace UrMotion
 
 	public abstract class MotionVec2P<T> : MotionVec2T<T> where T : MotionBehaviour<Vector2>
 	{
-		override public Vector3 vector {
+		public override Vector3 vector {
 			get {
 				return GetTransform().localPosition;
 			}
@@ -41,7 +41,7 @@ namespace UrMotion
 
 	public abstract class MotionVec2WP<T> : MotionVec2T<T> where T : MotionBehaviour<Vector2>
 	{
-		override public Vector3 vector {
+		public override Vector3 vector {
 			get {
 				return GetTransform().position;
 			}
@@ -53,7 +53,7 @@ namespace UrMotion
 
 	public abstract class MotionVec2R<T> : MotionVec2T<T> where T : MotionBehaviour<Vector2>
 	{
-		override public Vector3 vector {
+		public override Vector3 vector {
 			get {
 				return GetTransform().localEulerAngles;
 			}
@@ -65,7 +65,7 @@ namespace UrMotion
 
 	public abstract class MotionVec2WR<T> : MotionVec2T<T> where T : MotionBehaviour<Vector2>
 	{
-		override public Vector3 vector {
+		public override Vector3 vector {
 			get {
 				return GetTransform().eulerAngles;
 			}
@@ -77,7 +77,7 @@ namespace UrMotion
 
 	public abstract class MotionVec2S<T> : MotionVec2T<T> where T : MotionBehaviour<Vector2>
 	{
-		override public Vector3 vector {
+		public override Vector3 vector {
 			get {
 				return GetTransform().localScale;
 			}

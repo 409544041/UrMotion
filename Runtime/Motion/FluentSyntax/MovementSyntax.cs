@@ -1,10 +1,9 @@
-﻿using UnityEngine;
-using System;
-using System.Collections.Generic;
+﻿using System;
+using UnityEngine;
 
 namespace UrMotion
 {
-	using Syntax = UrMotion.FluentSyntax;
+	using Syntax = FluentSyntax;
 
 	public static class MovementSyntax
 	{

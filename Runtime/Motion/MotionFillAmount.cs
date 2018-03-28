@@ -1,18 +1,17 @@
-﻿using UnityEngine;
-using UnityEngine.UI;
+﻿using UnityEngine.UI;
 
 namespace UrMotion
 {
 	public class MotionFillAmount : MotionVec1<MotionFillAmount>
 	{
-		Image im;
+		Image Im;
 
 		protected Image GetImage()
 		{
-			return im ?? (im = GetComponent<Image>());
+			return Im ?? (Im = GetComponent<Image>());
 		}
 
-		override protected float value {
+		protected override float value {
 			get {
 				return GetImage().fillAmount;
 			}

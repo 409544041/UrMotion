@@ -4,7 +4,7 @@ namespace UrMotion
 {
 	public class MotionA : MotionVec1C<MotionA>
 	{
-		override protected float value {
+		protected override float value {
 			get {
 				return col.a;
 			}
@@ -18,7 +18,7 @@ namespace UrMotion
 
 	public class MotionC : MotionVec3C<MotionC>
 	{
-		override protected Vector3 value {
+		protected override Vector3 value {
 			get {
 				return new Vector3(col.r, col.g, col.b);
 			}
@@ -34,7 +34,7 @@ namespace UrMotion
 
 	public class MotionCA : MotionVec4C<MotionCA>
 	{
-		override protected Vector4 value {
+		protected override Vector4 value {
 			get {
 				return (Vector4)col;
 			}
