@@ -1,10 +1,9 @@
 ﻿using System.Collections.Generic;
-using Klak.Math;
 using UnityEngine;
 
 namespace UrMotion
 {
-	using P = Perlin;
+	using P = Internal.Perlin;
 
 	public static class Noise
 	{

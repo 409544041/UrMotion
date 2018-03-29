@@ -29,7 +29,7 @@
 
 using UnityEngine;
 
-namespace Klak.Math
+namespace UrMotion.Internal
 {
 	public static class Perlin
 	{
